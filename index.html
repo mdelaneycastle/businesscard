@@ -133,6 +133,8 @@
                     document.getElementById('word3').value = getRandomWord();
                     document.getElementById('word4').value = getRandomWord();
                 }
+
+                generateRandomWords();
             })
             .catch(error => console.error('Error fetching wordArray.json:', error));
     </script>
