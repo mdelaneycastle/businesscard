@@ -142,6 +142,19 @@
         </button>
         <!-- Add more buttons as needed -->
 
+        <input type="text" id="word1" readonly> 
+        <input type="text" id="word2" readonly> 
+        <input type="text" id="word3" readonly> 
+        <input type="text" id="word4" readonly> 
+        
+        <button onclick="generateRandomWords()">Generate Words</button> 
+        
+        <script> function generateRandomWords() { // Function to generate a random word between 3 and 5 characters 
+    function getRandomWord() { const characters = 'abcdefghijklmnopqrstuvwxyz'; const length = Math.floor(Math.random() * 3) + 3; // Random length between 3 and 5 let randomWord = ''; 
+                              for (let i = 0; i < length; i++) { const randomChar = characters.charAt(Math.floor(Math.random() * characters.length)); randomWord += randomChar; } return randomWord; } // Assign random words to text boxes 
+    document.getElementById('word1').value = getRandomWord(); document.getElementById('word2').value = getRandomWord(); document.getElementById('word3').value = getRandomWord(); document.getElementById('word4').value = getRandomWord(); } 
+        </script>
+
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
         </div>
