@@ -24,7 +24,7 @@
             padding: 20px;
             text-align: center;
             font-size: 25px;
-            position: relative; /* Ensure relative positioning for absolute child */
+            position: relative;
         }
 
         .profile-image {
@@ -63,7 +63,7 @@
 
         button:hover {
             background-color: #fff;
-            color: #000
+            color: #000;
         }
 
         button:hover img {
@@ -86,32 +86,56 @@
 
         .socials-container {
             position: fixed;
-            bottom: 50px; /* Adjust this value for the desired padding from the bottom */
+            bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 999; /* Ensure the image is above other content */
+            z-index: 999;
         }
 
         .socials-container img {
-
             height: auto;
-            width: 300px; /* Adjust the width as needed */
+            width: 300px;
         }
 
         .coloredbar-container {
             position: fixed;
             bottom: -5px;
             right: 0;
-            z-index: 999; /* Ensure the image is above other content */
-            padding: -10px; /* Adjust padding as needed */
+            z-index: 999;
+            padding: -10px;
         }
 
         .coloredbar-container img {
             max-width: 100%;
             height: auto;
-            width: 120px; /* Adjust the width as needed */
+            width: 120px;
         }
     </style>
+
+    <script>
+        // Fetch words from the JSON file
+        fetch('wordArray.json')
+            .then(response => response.json())
+            .then(data => {
+                // Use the fetched data in the englishWords array
+                const englishWords = data;
+
+                function generateRandomWords() {
+                    // Function to select a random word from the array
+                    function getRandomWord() {
+                        const randomIndex = Math.floor(Math.random() * englishWords.length);
+                        return englishWords[randomIndex];
+                    }
+
+                    // Assign random words to text boxes
+                    document.getElementById('word1').value = getRandomWord();
+                    document.getElementById('word2').value = getRandomWord();
+                    document.getElementById('word3').value = getRandomWord();
+                    document.getElementById('word4').value = getRandomWord();
+                }
+            })
+            .catch(error => console.error('Error fetching wordArray.json:', error));
+    </script>
 </head>
 <body>
 
@@ -121,7 +145,7 @@
 
     <main>
 
-      <div class="profile-image">
+        <div class="profile-image">
             <img src="dannyimage.png" alt="Danny Image">
         </div>
 
@@ -142,42 +166,13 @@
         </button>
         <!-- Add more buttons as needed -->
 
+        <!-- HTML for the text boxes and button -->
+        <input type="text" id="word1" readonly>
+        <input type="text" id="word2" readonly>
+        <input type="text" id="word3" readonly>
+        <input type="text" id="word4" readonly>
 
-<!-- HTML for the text boxes and button -->
-<input type="text" id="word1" readonly>
-<input type="text" id="word2" readonly>
-<input type="text" id="word3" readonly>
-<input type="text" id="word4" readonly>
-
-<button onclick="generateRandomWords()">Generate Words</button>
-
-
-<script>
-  // Fetch words from the JSON file
-  fetch('wordArray.json')
-    .then(response => response.json())
-    .then(data => {
-      // Use the fetched data in the englishWords array
-      const englishWords = data;
-
-      function generateRandomWords() {
-        // Function to select a random word from the array
-        function getRandomWord() {
-          const randomIndex = Math.floor(Math.random() * englishWords.length);
-          return englishWords[randomIndex];
-        }
-
-        // Assign random words to text boxes
-        document.getElementById('word1').value = getRandomWord();
-        document.getElementById('word2').value = getRandomWord();
-        document.getElementById('word3').value = getRandomWord();
-        document.getElementById('word4').value = getRandomWord();
-      }
-    })
-    .catch(error => console.error('Error fetching wordArray.json:', error));
-</script>
-
-
+        <button onclick="generateRandomWords()">Generate Words</button>
 
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
