@@ -111,6 +111,19 @@
             height: auto;
             width: 120px; /* Adjust the width as needed */
         }
+
+         @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideInFromLeft 0.5s ease-out; /* Adjust the duration and easing as needed */
+        }
     </style>
 </head>
 <body>
@@ -128,19 +141,19 @@
         <p class="staff-name"><strong>Marc Delaney</strong></p>
         <p class="gallery-manager">I.T. Co-Ordinator</p>
 
-        <button class="special" onclick="location.href='marc.vcf'">
+        <button class="special slide-in" onclick="location.href='marc.vcf'">
             <img src="Contact.png" alt="Contact" style="max-width: 30px; margin-right: 10px;">
             Contact Details
         </button>
-        <button class="special" onclick="location.href='https://www.castlefineart.com'">
+        <button class="special slide-in" onclick="location.href='https://www.castlefineart.com'">
             <img src="Web Url.png" alt="webpage" style="max-width: 30px; margin-right: 10px;">
             Website
         </button>
-        <button class="special" onclick="location.href='https://youtube.com/castlegalleries'">
+        <button class="special slide-in" onclick="location.href='https://youtube.com/castlegalleries'">
             <img src="youtubeicon.png" alt="youtube" style="max-width: 30px; margin-right: 10px;">
             Youtube
         </button>
-        <button class="special" onclick="location.href='https://sketchfab.com/marcosis/models'">
+        <button class="special slide-in" onclick="location.href='https://sketchfab.com/marcosis/models'">
             <img src="sketchfab.png" alt="sketchfab" style="max-width: 30px; margin-right: 10px;">
             Sketchfab Models
         </button>
@@ -155,6 +168,15 @@
         </div>
 
     </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var buttons = document.querySelectorAll('.slide-in');
+        buttons.forEach(function (button) {
+            button.style.animationDelay = button.style.animationDelay || "0s";
+        });
+    });
+</script>
 
 </body>
 </html>
