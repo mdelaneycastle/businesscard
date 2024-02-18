@@ -170,13 +170,13 @@
     </main>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var buttons = document.querySelectorAll('.slide-in');
-        buttons.forEach(function (button) {
-            button.style.animationDelay = button.style.animationDelay || "0s";
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.slide-in');
+            buttons.forEach(function (button, index) {
+                button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
