@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mobile Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #main-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .sketchfab-embed-wrapper {
+            width: 100%;
+            max-width: 600px; /* Adjust the maximum width as needed */
+        }
+
+        .box {
+            width: 100%;
+            max-width: 600px; /* Adjust the maximum width as needed */
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .box img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       
+        <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
+   
+    </header>
+
+    <div id="main-box">
+        <!-- Main Box with iframe -->
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Origins2" frameborder="0" allowfullscreen mozallowfullscreen="true"
+                webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
+                xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
+                src="https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed">
+            </iframe>
+        </div>
+
+        <!-- 4 Boxes with Images -->
+        <div class="box" onclick="changeIframe('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed')">
+            <img src="image1.jpg" alt="Image 1">
+        </div>
+
+        <div class="box" onclick="changeIframe('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+
+        <div class="box" onclick="changeIframe('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+
+        <div class="box" onclick="changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+    </div>
+
+    <script>
+        function changeIframe(src) {
+            document.querySelector('.sketchfab-embed-wrapper iframe').src = src;
+        }
+    </script>
+</body>
+
+</html>
