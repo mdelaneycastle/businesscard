@@ -30,9 +30,19 @@ header {
 }
 
 .sketchfab-embed-wrapper {
+    position: relative;
     width: 100%;
     max-width: 800px;
-    height: 800px;/* Adjust the maximum width as needed */
+    padding-bottom: 100%; /* Set the padding to make height equal to width */
+    overflow: hidden;
+}
+
+.sketchfab-embed-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .box {
