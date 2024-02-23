@@ -33,16 +33,18 @@
         }
 
         .box {
-            width: 100%;
-            max-width: 600px; /* Adjust the maximum width as needed */
-            margin: 10px 0;
-            cursor: pointer;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+    cursor: pointer;
+}
 
-        .box img {
-            width: 100%;
-            height: auto;
-        }
+.box img {
+    width: 100%;
+    height: auto;
+    max-width: 140px; /* Adjust the width as needed */
+}
 
         .socials-container {
             position: fixed;
