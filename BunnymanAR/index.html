@@ -43,6 +43,36 @@
             width: 100%;
             height: auto;
         }
+
+        .socials-container {
+            position: fixed;
+            bottom: 50px; /* Adjust this value for the desired padding from the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999; /* Ensure the image is above other content */
+        } 
+
+        .socials-container img { 
+
+            height: auto;
+            width: 300px; /* Adjust the width as needed */
+        } 
+
+        .coloredbar-container {
+            position: fixed;
+            bottom: -5px;
+            right: 0;
+            z-index: 999; /* Ensure the image is above other content */
+            padding: -10px; /* Adjust padding as needed */
+        } 
+
+        .coloredbar-container img {
+            max-width: 100%;
+            height: auto;
+            width: 120px; /* Adjust the width as needed */
+        }
+
+
     </style>
 </head>
 
@@ -79,6 +109,15 @@
         <div class="box" onclick="changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
             <img src="image4.jpg" alt="Image 4">
         </div>
+
+        <div class="socials-container">
+            <img src="SOCIALS.png" alt="Socials">
+        </div>
+
+        <div class="coloredbar-container">
+            <img src="thumbnail_Bar.jpg" alt="Colored Bar">
+        </div>
+        
     </div>
 
     <script>
