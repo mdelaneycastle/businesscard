@@ -87,6 +87,12 @@ header {
     width: 120px; /* Adjust the width as needed */
 }
 
+        .rowofboxes {
+            display: flex;
+            gap: 10px;
+            justify-content: centre;
+        }
+
     </style>
 </head>
 
@@ -106,7 +112,7 @@ header {
                 src="https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed">
             </iframe>
         </div>
-
+<div id = "rowofboxes">
         <!-- 4 Boxes with Images -->
         <div class="box" onclick="changeIframe('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed')">
             <img src="image1.jpg" alt="Image 1">
@@ -123,6 +129,7 @@ header {
         <div class="box" onclick="changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
             <img src="image4.jpg" alt="Image 4">
         </div>
+</div>
 
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
