@@ -111,6 +111,21 @@
             height: auto;
             width: 120px; /* Adjust the width as needed */
         }
+
+         @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideInFromLeft 0.5s ease-out; /* Adjust the duration and easing as needed */
+        }
+
+        
     </style>
 </head>
 <body>
@@ -152,5 +167,16 @@
 
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.slide-in');
+            buttons.forEach(function (button, index) {
+                button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
+            });
+        });
+    </script>
+
+
+    
 </body>
 </html>
