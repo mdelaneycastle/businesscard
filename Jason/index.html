@@ -1,1 +1,186 @@
-gtdfg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Jason Sellar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /*background-image: url('backgroundvid.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; */
+            background-color: #d8d1c5;
+            position: relative;
+
+        }
+
+        header {
+            text-align: center;
+            padding-top: 20px;
+            background-color: #d8d1c5;
+            color: #d8d1c5;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            font-size: 25px;
+            position: relative; /* Ensure relative positioning for absolute child */
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            max-width: 30%;
+        }
+
+        .profile-image img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #575554;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.special {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: #000
+        }
+
+        button:hover img {
+            filter: invert(1);
+        }
+
+        p.gallery-manager {
+            font-size: 15px;
+            padding-top: 0;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        p.staff-name {
+            font-size: 25px;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .socials-container {
+            position: fixed;
+            bottom: 50px; /* Adjust this value for the desired padding from the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999; /* Ensure the image is above other content */
+        }
+
+        .socials-container img {
+
+            height: auto;
+            width: 300px; /* Adjust the width as needed */
+        }
+
+        .coloredbar-container {
+            position: fixed;
+            bottom: -5px;
+            right: 0;
+            z-index: 999; /* Ensure the image is above other content */
+            padding: -10px; /* Adjust padding as needed */
+        }
+
+        .coloredbar-container img {
+            max-width: 100%;
+            height: auto;
+            width: 120px; /* Adjust the width as needed */
+        }
+
+         @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideInFromLeft 0.5s ease-out; /* Adjust the duration and easing as needed */
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
+    </header>
+
+    <main>
+
+      <div class="profile-image">
+            <img src="jason.jpeg" alt="Marc Image">
+        </div>
+
+        <p class="staff-name"><strong>Jason Sellar</strong></p>
+        <p class="gallery-manager">Art Consultant</p>
+
+        <button class="special slide-in" onclick="location.href='jason.vcf'">
+            <img src="Contact.png" alt="Contact" style="max-width: 30px; margin-right: 10px;">
+            Contact Details
+        </button>
+        <button class="special slide-in" onclick="location.href='https://youtube.com/castlegalleries'">
+            <img src="youtubeicon.png" alt="youtube" style="max-width: 30px; margin-right: 10px;">
+            Youtube
+        </button>
+        <button class="special slide-in" onclick="location.href='https://mdelaneycastle.github.io/businesscard/BunnymanAR/index.html'">
+            <img src="sketchfab.png" alt="sketchfab" style="max-width: 30px; margin-right: 10px;">
+            Bunnyman AR
+        </button>
+        <!-- Add more buttons as needed -->
+
+        <div class="socials-container">
+            <img src="SOCIALS.png" alt="Socials">
+        </div>
+
+        <div class="coloredbar-container">
+            <img src="thumbnail_Bar.jpg" alt="Colored Bar">
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.slide-in');
+            buttons.forEach(function (button, index) {
+                button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
+            });
+        });
+    </script>
+
+</body>
+</html>
+
