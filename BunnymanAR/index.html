@@ -167,9 +167,12 @@
 
     <!-- Popup container -->
     <div id="popup" class="popup-container">
-        <p>Stand 2 metres away from the wall. Point phone to the floor and with the phone slightly angled move in a figure of 8 motion. Once finished with the experience, close the popup window to return to the page.</p>
-        <button class="popup-button" onclick="startAction()">Start</button>
-    </div>
+    <video controls width="100%" height="auto" style="max-height: calc(100vh - 100px);">
+        <source src="JDE_AR_.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button class="popup-button" onclick="startAction()">Start</button>
+</div>
 
     <script>
         function changeIframe(src) {
