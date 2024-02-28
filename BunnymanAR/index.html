@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Mobile Website</title>
     <style>
-        
-        body {
+       body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -93,14 +92,40 @@ header {
             justify-content: centre;
         }
 
+
+        /* Popup styles */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #45494e;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup-container p {
+            margin-bottom: 20px;
+        }
+
+        .popup-button {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <header>
-       
         <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
-   
     </header>
 
     <div id="main-box">
@@ -112,24 +137,25 @@ header {
                 src="https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed">
             </iframe>
         </div>
-<div id = "rowofboxes">
-        <!-- 4 Boxes with Images -->
-        <div class="box" onclick="changeIframe('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed')">
-            <img src="image1.jpg" alt="Image 1">
-        </div>
 
-        <div class="box" onclick="changeIframe('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
-            <img src="image2.jpg" alt="Image 2">
-        </div>
+        <div id="rowofboxes">
+            <!-- 4 Boxes with Images -->
+            <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed')">
+                <img src="image1.jpg" alt="Image 1">
+            </div>
 
-        <div class="box" onclick="changeIframe('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
-            <img src="image3.jpg" alt="Image 3">
-        </div>
+            <div class="box" onclick="openPopup('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
+                <img src="image2.jpg" alt="Image 2">
+            </div>
 
-        <div class="box" onclick="changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
-            <img src="image4.jpg" alt="Image 4">
+            <div class="box" onclick="openPopup('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+
+            <div class="box" onclick="openPopup('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
+                <img src="image4.jpg" alt="Image 4">
+            </div>
         </div>
-</div>
 
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
@@ -138,14 +164,49 @@ header {
         <div class="coloredbar-container">
             <img src="coloredbar.png" alt="Colored Bar">
         </div>
-        
+    </div>
+
+    <!-- Popup container -->
+    <div id="popup" class="popup-container">
+        <p>Stand 2 metres away from the wall. Point phone to the floor and with the phone slightly angled move in a figure of 8 motion.</p>
+        <button class="popup-button" onclick="startAction()">Start</button>
     </div>
 
     <script>
         function changeIframe(src) {
             document.querySelector('.sketchfab-embed-wrapper iframe').src = src;
         }
+
+        function openPopup(src) {
+            changeIframe(src);
+            document.getElementById('popup').style.display = 'block';
+        }
+
+      function startAction() {
+    // Get the current iframe source URL
+    var currentIframeSrc = document.querySelector('.sketchfab-embed-wrapper iframe').src;
+
+    // Perform your original action logic here
+    if (currentIframeSrc.includes('562d2aa46a91439fb2335f59043c1a8d')) {
+        changeIframe('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed');
+        console.log('Your original logic for Image 1');
+    } else if (currentIframeSrc.includes('540e6aa407a240c697754677e075ab7c')) {
+      changeIframe('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed');
+        console.log('Your original logic for Image 2');
+    } else if (currentIframeSrc.includes('274554bf5e024bd696b3d997a816a504')) {
+        changeIframe('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed');
+        console.log('Your original logic for Image 3');
+    } else if (currentIframeSrc.includes('091c822b35a040f9a0f05e988d6a02cf')) {
+        changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed');
+        console.log('Your original logic for Image 4');
+    }
+
+    // Close the popup
+    document.getElementById('popup').style.display = 'none';
+}
+
     </script>
 </body>
 
 </html>
+
