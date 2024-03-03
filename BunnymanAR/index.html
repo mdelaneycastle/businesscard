@@ -242,10 +242,16 @@
     }
 </script>
 
-    
-  <label for="colorPicker">Choose background color:</label>
-<input type="color" id="colorPicker" name="colorPicker" onchange="changeBackgroundColor(this.value)">
-
+   <label for="colorPicker">Choose background color:</label>
+<input type="color" id="colorPicker" name="colorPicker" list="presetColors" onchange="changeBackgroundColor(this.value)">
+<datalist id="presetColors">
+  <option>#45494e</option> <!-- Red -->
+  <option>#FE828C</option> <!-- Blush Pink -->
+  <option>#000000</option> <!-- Black -->
+  <option>#FFFFFF</option> <!-- White -->
+  <!-- Add more preset colors as needed -->
+</datalist> 
+ 
 <script>
   function changeBackgroundColor(color) {
     document.body.style.backgroundColor = color;
