@@ -243,10 +243,16 @@
 </script>
 
     
-  
+  <label for="colorPicker">Choose background color:</label>
+<input type="color" id="colorPicker" name="colorPicker" onchange="changeBackgroundColor(this.value)">
 
-        <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://github.com/mdelaneycastle/businesscard/raw/main/BunnymanAR/BUNNY.glb#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"><button>Download Multiverse Folder</button>
-</a>
+<script>
+  function changeBackgroundColor(color) {
+    document.body.style.backgroundColor = color;
+  }
+</script>
+
+     
     
 </body>
 
