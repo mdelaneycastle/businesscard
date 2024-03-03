@@ -133,6 +133,19 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+#customColorPicker {
+  display: flex;
+}
+
+.colorButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+}
         
     </style>
 </head>
@@ -242,22 +255,20 @@
     }
 </script>
 
-   <label for="colorPicker">Choose background color:</label>
-<input type="color" id="colorPicker" name="colorPicker" list="presetColors" onchange="changeBackgroundColor(this.value)">
-<datalist id="presetColors">
-  <option>#45494e</option> <!-- Red -->
-  <option>#FE828C</option> <!-- Blush Pink -->
-  <option>#000000</option> <!-- Black -->
-  <option>#FFFFFF</option> <!-- White -->
-  <!-- Add more preset colors as needed -->
-</datalist> 
- 
-<script>
-  function changeBackgroundColor(color) {
-    document.body.style.backgroundColor = color;
-  }
-</script>
+ <div id="customColorPicker">
+  <button class="colorButton" style="background-color: #FF0000;" onclick="changeBackgroundColor('#FF0000')"></button>
+  <button class="colorButton" style="background-color: #0000FF;" onclick="changeBackgroundColor('#0000FF')"></button>
+  <!-- Add more buttons for additional colors -->
 
+  <!-- Color picker input for custom color selection -->
+  <input type="color" id="colorPicker" name="colorPicker" onchange="changeBackgroundColor(this.value)">
+</div>
+
+<script>
+function changeBackgroundColor(color) {
+  document.body.style.backgroundColor = color;
+}
+</script>
      
     
 </body>
