@@ -28,126 +28,72 @@
             margin: 20px;
         }
 
-        .sketchfab-embed-wrapper {
+        /* Remove styles for sketchfab-embed-wrapper and box */
+        #rowofboxes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            overflow: hidden; /* Hide overflow for the row of boxes */
             position: relative;
             width: 100%;
-            max-width: 800px;
-            padding-bottom: 100%; /* Set the padding to make height equal to width */
-            overflow: hidden;
-        }
-
-        .sketchfab-embed-wrapper iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
         }
 
         .box {
+            width: 100%; /* Set the width of each box */
             display: flex;
-            flex-direction: row;
-            justify-content: space-around; /* Adjust this property as needed */
-            margin: 10px 0;
-            cursor: pointer;
-            overflow-x: auto; /* Add this property to enable horizontal scrolling if needed */
+            justify-content: center;
+            transition: transform 0.5s ease;
         }
 
         .box img {
             width: 100%;
             height: auto;
-            max-width: 140px; /* Adjust the width as needed */
+            max-width: 140px;
         }
 
-        .socials-container {
-            position: fixed;
-            bottom: 50px; /* Adjust this value for the desired padding from the bottom */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999; /* Ensure the image is above other content */
-        }
-
-        .socials-container img {
-            height: auto;
-            width: 300px; /* Adjust the width as needed */
-        }
-
-        .coloredbar-container {
-            position: fixed;
-            bottom: -5px;
-            right: 0;
-            z-index: 999; /* Ensure the image is above other content */
-            padding: -10px; /* Adjust padding as needed */
-        }
-
-        .coloredbar-container img {
-            max-width: 100%;
-            height: auto;
-            width: 120px; /* Adjust the width as needed */
-        }
-
-        #rowofboxes {
-            display: flex;
-            gap: 10px;
-            justify-content: center; /* Corrected property value */
-        }
-
-        /* Popup styles */
-        .popup-container {
-            display: none;
-            position: fixed;
+        .arrow {
+            position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
             background-color: #45494e;
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        .popup-container p {
-            margin-bottom: 20px;
-        }
-
-        .popup-button {
-            background-color: #fff;
-            color: #000;
-            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button {
-            display: block;
-            width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            text-align: center;
-            background-color: #575554;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            margin: 0 5px;
         }
 
-#customColorPicker {
-  display: flex;
-}
+        .arrow-left {
+            left: 0;
+        }
 
-.colorButton {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin: 5px;
-  cursor: pointer;
-  border: 2px solid white;
-background-clip: padding-box;
-}
-        
+        .arrow-right {
+            right: 0;
+        }
+
+        .socials-container,
+        .coloredbar-container {
+            display: none;
+        }
+
+        #customColorPicker {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .colorButton {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid white;
+            background-clip: padding-box;
+        }
+
     </style>
 </head>
 
@@ -157,17 +103,7 @@ background-clip: padding-box;
     </header>
 
     <div id="main-box">
-        <!-- Main Box with iframe -->
-        <div class="sketchfab-embed-wrapper">
-            <iframe title="Origins2" frameborder="0" allowfullscreen mozallowfullscreen="true"
-                webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
-                src="https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed?ui_infos=0&ui_watermark_link=0&ui_watermark=0">
-            </iframe>
-        </div>
-
         <div id="rowofboxes">
-            <!-- 4 Boxes with Images -->
             <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
                 <img src="image1.jpg" alt="Image 1">
             </div>
@@ -183,6 +119,8 @@ background-clip: padding-box;
             <div class="box" onclick="openPopup('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
                 <img src="image4.jpg" alt="Image 4">
             </div>
+            <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
+            <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
         </div>
 
         <div class="socials-container">
@@ -194,84 +132,49 @@ background-clip: padding-box;
         </div>
     </div>
 
-   
     <!-- Popup container -->
+    <div id="popup" class="popup-container">
+        <button class="popup-button" style="width: 80%;" onclick="startAction()">Start Experience</button>
+    </div>
 
-<div id="popup" class="popup-container">
-    
-    <button class="popup-button" style="width: 80%;" onclick="startAction()">Start Experience</button>
-</div>
+    <div id="customColorPicker">
+        <button class="colorButton" style="background-color: #45494e;" onclick="changeBackgroundColor('#45494e')"></button>
+        <button class="colorButton" style="background-color: #FE828C;" onclick="changeBackgroundColor('#FE828C')"></button>
+        <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeBackgroundColor('#d8d1c5')"></button>
+        <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeBackgroundColor('#B6D0E2')"></button>
+    </div>
 
     <script>
-    function changeIframe(src) {
-        document.querySelector('.sketchfab-embed-wrapper iframe').src = src;
-    }
+        let currentIndex = 0;
 
-    function openLink(url) {
-        window.location.href = url;
-    }
-
-    function openPopup(src, url) {
-        changeIframe(src);
-
-        // If the source is for Image 2, directly open the specified URL
-        if (url) {
-            openLink(url);
-        } else {
-            // Show the popup for other images
-            document.getElementById('popup').style.display = 'block';
-        }
-    }
-
-    function startAction() {
-        // Get the current iframe source URL
-        var currentIframeSrc = document.querySelector('.sketchfab-embed-wrapper iframe').src;
-
-        // Perform your original action logic here
-        if (currentIframeSrc.includes('562d2aa46a91439fb2335f59043c1a8d')) {
-            changeIframe('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/embed?ui_infos=0&ui_watermark_link=0&ui_watermark=0');
-            console.log('Your original logic for Image 1');
-
-            // Open the corresponding link in a new window
-            window.open ('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect', '_blank');
-        } else if (currentIframeSrc.includes('540e6aa407a240c697754677e075ab7c')) {
-            // For Image 2, directly open the specified URL
-            openLink('https://drive.google.com/file/d/1wJDZE83lAJJ_KBd1ru0sEbtiSLrpsKff/view?usp=sharing');
-        } else if (currentIframeSrc.includes('274554bf5e024bd696b3d997a816a504')) {
-            changeIframe('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed?ui_infos=0&ui_watermark_link=0&ui_watermark=0');
-            console.log('Your original logic for Image 3');
-
-            // Open the corresponding link in a new window
-            window.open('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect', '_blank');
-        } else if (currentIframeSrc.includes('091c822b35a040f9a0f05e988d6a02cf')) {
-            changeIframe('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed?ui_infos=0&ui_watermark_link=0&ui_watermark=0');
-            console.log('Your original logic for Image 4');
-
-            // Open the corresponding link in a new window
-            window.open('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect', '_blank');
+        function openPopup(src, url) {
+            changeIframe(src);
+            if (url) {
+                openLink(url);
+            } else {
+                document.getElementById('popup').style.display = 'block';
+            }
         }
 
-        // Close the popup
-        document.getElementById('popup').style.display = 'none';
-    }
-</script>
+        function scrollRow(direction) {
+            const boxes = document.querySelectorAll('.box');
+            const boxWidth = boxes[0].offsetWidth + parseInt(window.getComputedStyle(boxes[0]).marginLeft);
+            const rowWidth = boxes.length * boxWidth;
+            const row = document.getElementById('rowofboxes');
 
- <div id="customColorPicker">
-  <button class="colorButton" style="background-color: #45494e;" onclick="changeBackgroundColor('#45494e')"></button>
-  <button class="colorButton" style="background-color: #FE828C;" onclick="changeBackgroundColor('#FE828C')"></button>
-<button class="colorButton" style="background-color: #d8d1c5;" onclick="changeBackgroundColor('#d8d1c5')"></button>
-<button class="colorButton" style="background-color: #B6D0E2;" onclick="changeBackgroundColor('#B6D0E2')"></button>
-  
-</div>
+            currentIndex = (currentIndex + direction) % boxes.length;
+            if (currentIndex < 0) {
+                currentIndex = boxes.length - 1;
+            }
 
-<script>
-function changeBackgroundColor(color) {
-  document.body.style.backgroundColor = color;
-}
-</script>
-     
-    
+            row.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+
 </body>
 
 </html>
-
