@@ -127,10 +127,10 @@
     <div id="main-box">
         <div id="rowofboxes">
             <div class="arrow-container">
-                <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
-                <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
+                <button class="arrow arrow-left" onclick="prev()">‹</button>
+                <button class="arrow arrow-right" onclick="next()">›</button>
             </div>
-            <div class="box-container" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)">
+            <div class="box-container">
                 <div class="box" onclick="openLink('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect')">
                     <img src="image1.jpg" alt="Image 1">
                 </div>
@@ -168,35 +168,25 @@
 
     <script>
         let currentIndex = 0;
-        let touchStartX = 0;
-        let touchMoveX = 0;
 
         function openLink(url) {
             window.open(url, '_blank');
         }
 
-        function scrollRow(direction) {
-            const boxContainer = document.querySelector('.box-container');
-            const boxWidth = document.querySelector('.box').offsetWidth + 20; // 20px for margin
-            currentIndex = Math.min(Math.max(currentIndex + direction, 0), boxContainer.children.length - 1);
-            boxContainer.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
+        function next() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            updateImage();
         }
 
-        function handleTouchStart(event) {
-            touchStartX = event.touches[0].clientX;
+        function prev() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            updateImage();
         }
 
-        function handleTouchMove(event) {
-            touchMoveX = event.touches[0].clientX;
+        function updateImage() {
+            const imgTag = document.querySelector('.box img');
+            imgTag.src = photos[currentIndex];
         }
-
-        window.addEventListener('touchend', function () {
-            if (touchStartX - touchMoveX > 50) {
-                scrollRow(1); // Swipe left
-            } else if (touchMoveX - touchStartX > 50) {
-                scrollRow(-1); // Swipe right
-            }
-        });
 
         function changeColors(color) {
             document.getElementById('main-header').style.backgroundColor = color;
