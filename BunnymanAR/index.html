@@ -30,7 +30,7 @@
 
         #rowofboxes {
             display: flex;
-            overflow: hidden; /* Hide overflow for the row of boxes */
+            overflow: hidden;
             position: relative;
             width: 100%;
         }
@@ -41,16 +41,18 @@
         }
 
         .box {
-            width: 50vw; /* Set the width of each box to 50% of the viewport width */
+            width: 70vw; /* Set the width of each box to 70% of the viewport width */
             flex: 0 0 auto;
             margin-right: 10px; /* Adjust margin as needed */
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .box img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
-            max-width: 100%; /* Ensure the image takes up the entire width of the box */
         }
 
         .arrow {
@@ -105,7 +107,8 @@
 
     <div id="main-box">
         <div id="rowofboxes">
-            <div class="box-container">
+            <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
+            <div class="box-container" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)">
                 <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
                     <img src="image1.jpg" alt="Image 1">
                 </div>
@@ -148,6 +151,8 @@
 
     <script>
         let currentIndex = 0;
+        let touchStartX = 0;
+        let touchMoveX = 0;
 
         function openPopup(src, url) {
             changeIframe(src);
@@ -165,11 +170,26 @@
             boxContainer.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
         }
 
+        function handleTouchStart(event) {
+            touchStartX = event.touches[0].clientX;
+        }
+
+        function handleTouchMove(event) {
+            touchMoveX = event.touches[0].clientX;
+        }
+
+        window.addEventListener('touchend', function () {
+            if (touchStartX - touchMoveX > 50) {
+                scrollRow(1); // Swipe left
+            } else if (touchMoveX - touchStartX > 50) {
+                scrollRow(-1); // Swipe right
+            }
+        });
+
         function changeBackgroundColor(color) {
             document.body.style.backgroundColor = color;
         }
     </script>
-
 </body>
 
 </html>
