@@ -167,32 +167,39 @@
     </div>
 
     <script>
-        let currentIndex = 0;
+    const photos = [
+        'image1.jpg',
+        'image2.jpg',
+        'image3.jpg',
+        'image4.jpg'
+    ];
 
-        function openLink(url) {
-            window.open(url, '_blank');
-        }
+    let currentIndex = 0;
 
-        function next() {
-            currentIndex = (currentIndex + 1) % photos.length;
-            updateImage();
-        }
+    function openLink(url) {
+        window.open(url, '_blank');
+    }
 
-        function prev() {
-            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-            updateImage();
-        }
+    function next() {
+        currentIndex = (currentIndex + 1) % photos.length;
+        updateImage();
+    }
 
-        function updateImage() {
-            const imgTag = document.querySelector('.box img');
-            imgTag.src = photos[currentIndex];
-        }
+    function prev() {
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+        updateImage();
+    }
 
-        function changeColors(color) {
-            document.getElementById('main-header').style.backgroundColor = color;
-            document.body.style.backgroundColor = color;
-        }
-    </script>
+    function updateImage() {
+        const imgTag = document.querySelector('.box img');
+        imgTag.src = photos[currentIndex];
+    }
+
+    function changeColors(color) {
+        document.getElementById('main-header').style.backgroundColor = color;
+        document.body.style.backgroundColor = color;
+    }
+</script>
 </body>
 
 </html>
