@@ -38,16 +38,17 @@
         .box-container {
             display: flex;
             transition: transform 0.5s ease;
-            margin: 0 -10vw; /* Negative margin to create space on both sides */
+            margin: 0; /* Remove margin to center the first box */
         }
 
         .box {
-            width: 80vw; /* Set the width of each box to 80% of the viewport width */
+            width: 80vw;
             flex: 0 0 auto;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0 10vw; /* Adjusted margin to create space on both sides */
         }
 
         .box img {
