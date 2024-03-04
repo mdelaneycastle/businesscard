@@ -38,17 +38,16 @@
         .box-container {
             display: flex;
             transition: transform 0.5s ease;
-            margin: 0; /* Remove margin to center the first box */
+            width: 400%; /* Adjusted width to accommodate all boxes */
         }
 
         .box {
-            width: 80vw;
+            width: 50vw; /* Adjusted width to take up 50% of the viewport width */
             flex: 0 0 auto;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 10vw; /* Adjusted margin to create space on both sides */
         }
 
         .box img {
@@ -167,39 +166,39 @@
     </div>
 
     <script>
-    const photos = [
-        'image1.jpg',
-        'image2.jpg',
-        'image3.jpg',
-        'image4.jpg'
-    ];
+        const photos = [
+            'image1.jpg',
+            'image2.jpg',
+            'image3.jpg',
+            'image4.jpg'
+        ];
 
-    let currentIndex = 0;
+        let currentIndex = 0;
 
-    function openLink(url) {
-        window.open(url, '_blank');
-    }
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
 
-    function next() {
-        currentIndex = (currentIndex + 1) % photos.length;
-        updateImage();
-    }
+        function next() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            updateImage();
+        }
 
-    function prev() {
-        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-        updateImage();
-    }
+        function prev() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            updateImage();
+        }
 
-    function updateImage() {
-        const imgTag = document.querySelector('.box img');
-        imgTag.src = photos[currentIndex];
-    }
+        function updateImage() {
+            const imgTag = document.querySelector('.box img');
+            imgTag.src = photos[currentIndex];
+        }
 
-    function changeColors(color) {
-        document.getElementById('main-header').style.backgroundColor = color;
-        document.body.style.backgroundColor = color;
-    }
-</script>
+        function changeColors(color) {
+            document.getElementById('main-header').style.backgroundColor = color;
+            document.body.style.backgroundColor = color;
+        }
+    </script>
 </body>
 
 </html>
