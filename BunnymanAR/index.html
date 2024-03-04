@@ -41,7 +41,7 @@
         }
 
         .box {
-            width: 100vw; /* Set the width of each box to 100% of the viewport width */
+            width: 80vw; /* Set the width of each box to 80% of the viewport width */
             flex: 0 0 auto;
             cursor: pointer;
             display: flex;
@@ -157,7 +157,7 @@
 
         function scrollRow(direction) {
             const boxContainer = document.querySelector('.box-container');
-            const boxWidth = document.querySelector('.box').offsetWidth;
+            const boxWidth = document.querySelector('.box').offsetWidth + 10; // 10px for margin-right
             currentIndex = Math.min(Math.max(currentIndex + direction, 0), boxContainer.children.length - 1);
             boxContainer.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
         }
