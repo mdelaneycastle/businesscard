@@ -92,7 +92,8 @@
 
         #customColorPicker {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             margin-top: 20px;
         }
 
@@ -104,6 +105,15 @@
             cursor: pointer;
             border: 2px solid white;
             background-clip: padding-box;
+        }
+
+        #customHexInput {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 2px solid #45494e;
+            width: 150px;
+            text-align: center;
         }
     </style>
 </head>
@@ -152,6 +162,7 @@
         <button class="colorButton" style="background-color: #FE828C;" onclick="changeColors('#FE828C')"></button>
         <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeColors('#d8d1c5')"></button>
         <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeColors('#B6D0E2')"></button>
+        <input id="customHexInput" type="text" placeholder="Custom Hex Code" onchange="changeColors(this.value)">
     </div>
 
     <script>
