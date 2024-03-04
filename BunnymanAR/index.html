@@ -88,6 +88,22 @@
         .coloredbar-container {
             display: none;
         }
+
+        .text-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .image-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .artist-name {
+            font-size: 16px;
+        }
+        
     </style>
 </head>
 
@@ -121,6 +137,13 @@
             </div>
         </div>
 
+        <div class="text-container">
+        <div class="image-title">"Image 1"</div>
+        <div class="artist-name">Johnny Depp</div>
+    </div>
+
+        
+
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
         </div>
@@ -148,18 +171,32 @@
     function next() {
         currentIndex = (currentIndex + 1) % photos.length;
         updateImage();
+        updateText();
     }
 
     function prev() {
         currentIndex = (currentIndex - 1 + photos.length) % photos.length;
         updateImage();
+        updateText();
     }
 
     function updateImage() {
         const imgTag = document.querySelector('.box img');
         imgTag.src = photos[currentIndex].src;
     }
-    </script>
+
+    function updateText() {
+        const titleTag = document.querySelector('.image-title');
+        titleTag.textContent = `"Image ${currentIndex + 1}"`;
+        // Actor name remains the same
+    }
+
+    function changeColors(color) {
+        document.getElementById('main-header').style.backgroundColor = color;
+        document.body.style.backgroundColor = color;
+    }
+</script>
+
 </body>
 
 </html>
