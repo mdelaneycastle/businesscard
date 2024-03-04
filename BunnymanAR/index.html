@@ -106,21 +106,18 @@
         }
 
         label {
-            margin-top: 10px;
             font-weight: bold;
             font-size: 18px; /* Increased font size */
         }
 
         select, input {
-            margin-top: 10px;
             margin-bottom: 10px;
             font-size: 16px; /* Increased font size */
         }
 
         #locationDetails {
-            margin-top: 10px;
+            margin-top: 20px;
         }
-        
     </style>
 </head>
 
@@ -161,9 +158,44 @@
 
         <label for="locationSelect">Select a location:</label>
         <select id="locationSelect" onchange="showLocationDetails()">
-            <option value="location1">Location 1</option>
-            <option value="location2">Location 2</option>
-            <!-- Add more options as needed -->
+            <option value="Bath">Bath</option>
+            <option value="BirminghamICC">Birmingham - ICC</option>
+            <option value="BirminghamMailbox">Birmingham - The Mailbox</option>
+            <option value="Brighton">Brighton</option>
+            <option value="Bristol">Bristol</option>
+            <option value="Cambridge">Cambridge</option>
+            <option value="Canterbury">Canterbury</option>
+            <option value="Cardiff">Cardiff</option>
+            <option value="Cheltenham">Cheltenham</option>
+            <option value="Chester">Chester</option>
+            <option value="Derby">Derby</option>
+            <option value="Edinburgh">Edinburgh</option>
+            <option value="Exeter">Exeter</option>
+            <option value="Glasgow">Glasgow</option>
+            <option value="Guildford">Guildford</option>
+            <option value="Harrogate">Harrogate</option>
+            <option value="KentBluewater">Kent - Bluewater</option>
+            <option value="LeamingtonSpa">Leamington Spa</option>
+            <option value="Leeds">Leeds</option>
+            <option value="Liverpool">Liverpool</option>
+            <option value="LondonCoventGarden">London - Covent Garden</option>
+            <option value="LondonMoltonStreet">London - South Molton Street</option>
+            <option value="LondonStChristophersPlace">London - St Christopher's Place</option>
+            <option value="Manchester">Manchester</option>
+            <option value="Marlow">Marlow</option>
+            <option value="MiltonKeynes">Milton Keynes</option>
+            <option value="NewYorkCastleContemporary">New York - Castle Contemporary</option>
+            <option value="Newcastle">Newcastle</option>
+            <option value="Norwich">Norwich</option>
+            <option value="Nottingham">Nottingham</option>
+            <option value="Oxford">Oxford</option>
+            <option value="Reading">Reading</option>
+            <option value="SheffieldMeadowhall">Sheffield - Meadowhall</option>
+            <option value="Stamford">Stamford</option>
+            <option value="StratfordUponAvon">Stratford-upon-Avon</option>
+            <option value="TunbridgeWells">Tunbridge Wells</option>
+            <option value="Windsor">Windsor</option>
+            <option value="York">York</option>
         </select>
 
         <div id="locationDetails">
@@ -231,8 +263,10 @@
 
             // Sample data (replace with your actual data)
             const locationData = {
-                'location1': { address: '123 Main St, Cityville', phone: '555-1234' },
-                'location2': { address: '456 Oak St, Townburg', phone: '555-5678' }
+                'Bath': { address: '123 Main St, Bath', phone: '555-1234' },
+                'BirminghamICC': { address: '456 Broad St, Birmingham', phone: '555-5678' },
+                'BirminghamMailbox': { address: '789 Mailbox St, Birmingham', phone: '555-9876' },
+                'Brighton': { address: '101 Seafront Ave, Brighton', phone: '555-4321' },
                 // Add more data for each location
             };
 
