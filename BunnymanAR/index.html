@@ -120,19 +120,19 @@
                 <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
             </div>
             <div class="box-container" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)">
-                <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
+                <div class="box" onclick="openLink('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect')">
                     <img src="image1.jpg" alt="Image 1">
                 </div>
 
-                <div class="box" onclick="openPopup('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
+                <div class="box" onclick="openLink('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect')">
                     <img src="image2.jpg" alt="Image 2">
                 </div>
 
-                <div class="box" onclick="openPopup('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
+                <div class="box" onclick="openLink('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect')">
                     <img src="image3.jpg" alt="Image 3">
                 </div>
 
-                <div class="box" onclick="openPopup('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
+                <div class="box" onclick="openLink('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect')">
                     <img src="image4.jpg" alt="Image 4">
                 </div>
             </div>
@@ -159,11 +159,8 @@
         let touchStartX = 0;
         let touchMoveX = 0;
 
-        function openPopup(src, url) {
-            changeIframe(src);
-            if (url) {
-                openLink(url);
-            }
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
         function scrollRow(direction) {
