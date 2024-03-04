@@ -88,33 +88,6 @@
         .coloredbar-container {
             display: none;
         }
-
-        #customColorPicker {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .colorButton {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 5px;
-            cursor: pointer;
-            border: 2px solid white;
-            background-clip: padding-box;
-        }
-
-        #customHexInput {
-            margin-top: 10px;
-            padding: 5px;
-            border-radius: 10px;
-            border: 2px solid #45494e;
-            width: 150px;
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -157,14 +130,6 @@
         </div>
     </div>
 
-    <div id="customColorPicker">
-        <button class="colorButton" style="background-color: #45494e;" onclick="changeColors('#45494e')"></button>
-        <button class="colorButton" style="background-color: #FE828C;" onclick="changeColors('#FE828C')"></button>
-        <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeColors('#d8d1c5')"></button>
-        <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeColors('#B6D0E2')"></button>
-        <input id="customHexInput" type="text" placeholder="Custom Hex Code" onchange="changeColors(this.value)">
-    </div>
-
     <script>
     const photos = [
         { src: 'image1.jpg', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
@@ -193,11 +158,6 @@
     function updateImage() {
         const imgTag = document.querySelector('.box img');
         imgTag.src = photos[currentIndex].src;
-    }
-
-    function changeColors(color) {
-        document.getElementById('main-header').style.backgroundColor = color;
-        document.body.style.backgroundColor = color;
     }
     </script>
 </body>
