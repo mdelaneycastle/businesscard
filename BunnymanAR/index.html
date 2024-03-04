@@ -155,10 +155,10 @@
 
     <script>
     const photos = [
-        { src: 'image1.jpg', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
-        { src: 'image2.jpg', link: 'https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect' },
-        { src: 'image3.jpg', link: 'https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect' },
-        { src: 'image4.jpg', link: 'https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect' }
+        { src: 'image1.jpg', title: 'Origins', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
+        { src: 'image2.jpg', title: 'Multiverse', link: 'https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect' },
+        { src: 'image3.jpg', title: 'Flowers', link: 'https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect' },
+        { src: 'image4.jpg', title: 'Cosmic', link: 'https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect' }
     ];
 
     let currentIndex = 0;
@@ -187,7 +187,7 @@
 
     function updateText() {
         const titleTag = document.querySelector('.image-title');
-        titleTag.textContent = `"Image ${currentIndex + 1}"`;
+        titleTag.textContent = `"${photos[currentIndex].title}"`;
         // Actor name remains the same
     }
 
@@ -196,7 +196,6 @@
         document.body.style.backgroundColor = color;
     }
 </script>
-
 </body>
 
 </html>
