@@ -28,27 +28,29 @@
             margin: 20px;
         }
 
-        /* Remove styles for sketchfab-embed-wrapper and box */
         #rowofboxes {
             display: flex;
-            gap: 10px;
-            justify-content: center;
             overflow: hidden; /* Hide overflow for the row of boxes */
             position: relative;
             width: 100%;
         }
 
-        .box {
-            width: 100%; /* Set the width of each box */
+        .box-container {
             display: flex;
-            justify-content: center;
             transition: transform 0.5s ease;
+        }
+
+        .box {
+            width: 50vw; /* Set the width of each box to 50% of the viewport width */
+            flex: 0 0 auto;
+            margin-right: 10px; /* Adjust margin as needed */
+            cursor: pointer;
         }
 
         .box img {
             width: 100%;
             height: auto;
-            max-width: 140px;
+            max-width: 100%; /* Ensure the image takes up the entire width of the box */
         }
 
         .arrow {
@@ -93,7 +95,6 @@
             border: 2px solid white;
             background-clip: padding-box;
         }
-
     </style>
 </head>
 
@@ -104,22 +105,23 @@
 
     <div id="main-box">
         <div id="rowofboxes">
-            <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
-                <img src="image1.jpg" alt="Image 1">
-            </div>
+            <div class="box-container">
+                <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
+                    <img src="image1.jpg" alt="Image 1">
+                </div>
 
-            <div class="box" onclick="openPopup('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
-                <img src="image2.jpg" alt="Image 2">
-            </div>
+                <div class="box" onclick="openPopup('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/embed')">
+                    <img src="image2.jpg" alt="Image 2">
+                </div>
 
-            <div class="box" onclick="openPopup('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
-                <img src="image3.jpg" alt="Image 3">
-            </div>
+                <div class="box" onclick="openPopup('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/embed')">
+                    <img src="image3.jpg" alt="Image 3">
+                </div>
 
-            <div class="box" onclick="openPopup('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
-                <img src="image4.jpg" alt="Image 4">
+                <div class="box" onclick="openPopup('https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/embed')">
+                    <img src="image4.jpg" alt="Image 4">
+                </div>
             </div>
-            <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
             <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
         </div>
 
@@ -157,17 +159,10 @@
         }
 
         function scrollRow(direction) {
-            const boxes = document.querySelectorAll('.box');
-            const boxWidth = boxes[0].offsetWidth + parseInt(window.getComputedStyle(boxes[0]).marginLeft);
-            const rowWidth = boxes.length * boxWidth;
-            const row = document.getElementById('rowofboxes');
-
-            currentIndex = (currentIndex + direction) % boxes.length;
-            if (currentIndex < 0) {
-                currentIndex = boxes.length - 1;
-            }
-
-            row.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
+            const boxContainer = document.querySelector('.box-container');
+            const boxWidth = document.querySelector('.box').offsetWidth + 10; // 10px for margin-right
+            currentIndex = Math.min(Math.max(currentIndex + direction, 0), boxContainer.children.length - 1);
+            boxContainer.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
         }
 
         function changeBackgroundColor(color) {
