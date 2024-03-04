@@ -92,7 +92,7 @@
 
         .text-container {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 30px; /* Increased margin */
         }
 
         .image-title {
@@ -107,10 +107,12 @@
 
         label {
             font-weight: bold;
+            font-size: 18px; /* Increased font size */
         }
 
         select, input {
             margin-bottom: 10px;
+            font-size: 16px; /* Increased font size */
         }
 
         #locationDetails {
@@ -151,22 +153,21 @@
         </div>
 
         <div class="text-container">
-        <div class="image-title">"Origins"</div>
-        <div class="artist-name">Johnny Depp</div>
-    </div>
+            <div class="image-title">"Origins"</div>
+            <div class="artist-name">Johnny Depp</div>
+        </div>
 
         <label for="locationSelect">Select a location:</label>
-    <select id="locationSelect" onchange="showLocationDetails()">
-        <option value="location1">Location 1</option>
-        <option value="location2">Location 2</option>
-        <!-- Add more options as needed -->
-    </select>
+        <select id="locationSelect" onchange="showLocationDetails()">
+            <option value="location1">Location 1</option>
+            <option value="location2">Location 2</option>
+            <!-- Add more options as needed -->
+        </select>
 
-    <div id="locationDetails">
-        <p><strong>Address:</strong> <span id="address"></span></p>
-        <p><strong>Phone Number:</strong> <span id="phoneNumber"></span></p>
-    </div>
-        
+        <div id="locationDetails">
+            <p><strong>Address:</strong> <span id="address"></span></p>
+            <p><strong>Phone Number:</strong> <span id="phoneNumber"></span></p>
+        </div>
 
         <div class="socials-container">
             <img src="SOCIALS.png" alt="Socials">
@@ -178,49 +179,48 @@
     </div>
 
     <script>
-    const photos = [
-        { src: 'image1.jpg', title: 'Origins', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
-        { src: 'image2.jpg', title: 'Multiverse', link: 'https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect' },
-        { src: 'image3.jpg', title: 'Flowers', link: 'https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect' },
-        { src: 'image4.jpg', title: 'Cosmic', link: 'https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect' }
-    ];
+        const photos = [
+            { src: 'image1.jpg', title: 'Origins', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
+            { src: 'image2.jpg', title: 'Multiverse', link: 'https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect' },
+            { src: 'image3.jpg', title: 'Flowers', link: 'https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect' },
+            { src: 'image4.jpg', title: 'Cosmic', link: 'https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect' }
+        ];
 
-    let currentIndex = 0;
+        let currentIndex = 0;
 
-    function openLink() {
-        const url = photos[currentIndex].link;
-        window.open(url, '_blank');
-    }
+        function openLink() {
+            const url = photos[currentIndex].link;
+            window.open(url, '_blank');
+        }
 
-    function next() {
-        currentIndex = (currentIndex + 1) % photos.length;
-        updateImage();
-        updateText();
-    }
+        function next() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            updateImage();
+            updateText();
+        }
 
-    function prev() {
-        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-        updateImage();
-        updateText();
-    }
+        function prev() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            updateImage();
+            updateText();
+        }
 
-    function updateImage() {
-        const imgTag = document.querySelector('.box img');
-        imgTag.src = photos[currentIndex].src;
-    }
+        function updateImage() {
+            const imgTag = document.querySelector('.box img');
+            imgTag.src = photos[currentIndex].src;
+        }
 
-    function updateText() {
-        const titleTag = document.querySelector('.image-title');
-        titleTag.textContent = `"${photos[currentIndex].title}"`;
-        // Actor name remains the same
-    }
+        function updateText() {
+            const titleTag = document.querySelector('.image-title');
+            titleTag.textContent = `"${photos[currentIndex].title}"`;
+            // Actor name remains the same
+        }
 
-    function changeColors(color) {
-        document.getElementById('main-header').style.backgroundColor = color;
-        document.body.style.backgroundColor = color;
-    }
+        function changeColors(color) {
+            document.getElementById('main-header').style.backgroundColor = color;
+            document.body.style.backgroundColor = color;
+        }
 
-        <script>
         function showLocationDetails() {
             const locationSelect = document.getElementById('locationSelect');
             const locationDetails = document.getElementById('locationDetails');
@@ -244,13 +244,13 @@
 
                 // You can add a link to open the address in a maps app
                 addressSpan.innerHTML = `<a href="https://maps.google.com?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
-                
+
                 locationDetails.style.display = 'block';
             } else {
                 locationDetails.style.display = 'none';
             }
         }
-</script>
+    </script>
 </body>
 
 </html>
