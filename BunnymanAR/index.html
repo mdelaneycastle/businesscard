@@ -162,9 +162,10 @@
         <button class="colorButton" style="background-color: #FE828C;" onclick="changeColors('#FE828C')"></button>
         <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeColors('#d8d1c5')"></button>
         <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeColors('#B6D0E2')"></button>
+<input id="customHexInput" type="text" placeholder="Custom Hex Code" onchange="changeColors(this.value)">
             </div>
 
-<div><input id="customHexInput" type="text" placeholder="Custom Hex Code" onchange="changeColors(this.value)"></div>
+
     <script>
         let currentIndex = 0;
         let touchStartX = 0;
