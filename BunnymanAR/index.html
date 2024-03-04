@@ -42,7 +42,7 @@
         }
 
         .box {
-            width: 50vw; /* Adjusted width to take up 50% of the viewport width */
+            width: 600px; /* Adjusted width to take up 50% of the viewport width */
             flex: 0 0 auto;
             cursor: pointer;
             display: flex;
@@ -88,33 +88,6 @@
         .coloredbar-container {
             display: none;
         }
-
-        #customColorPicker {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .colorButton {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 5px;
-            cursor: pointer;
-            border: 2px solid white;
-            background-clip: padding-box;
-        }
-
-        #customHexInput {
-            margin-top: 10px;
-            padding: 5px;
-            border-radius: 10px;
-            border: 2px solid #45494e;
-            width: 150px;
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -157,47 +130,35 @@
         </div>
     </div>
 
-    <div id="customColorPicker">
-        <button class="colorButton" style="background-color: #45494e;" onclick="changeColors('#45494e')"></button>
-        <button class="colorButton" style="background-color: #FE828C;" onclick="changeColors('#FE828C')"></button>
-        <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeColors('#d8d1c5')"></button>
-        <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeColors('#B6D0E2')"></button>
-        <input id="customHexInput" type="text" placeholder="Custom Hex Code" onchange="changeColors(this.value)">
-    </div>
-
     <script>
-        const photos = [
-            'image1.jpg',
-            'image2.jpg',
-            'image3.jpg',
-            'image4.jpg'
-        ];
+    const photos = [
+        { src: 'image1.jpg', link: 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect' },
+        { src: 'image2.jpg', link: 'https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect' },
+        { src: 'image3.jpg', link: 'https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect' },
+        { src: 'image4.jpg', link: 'https://sketchfab.com/models/091c822b35a040f9a0f05e988d6a02cf/ar-redirect' }
+    ];
 
-        let currentIndex = 0;
+    let currentIndex = 0;
 
-        function openLink(url) {
-            window.open(url, '_blank');
-        }
+    function openLink() {
+        const url = photos[currentIndex].link;
+        window.open(url, '_blank');
+    }
 
-        function next() {
-            currentIndex = (currentIndex + 1) % photos.length;
-            updateImage();
-        }
+    function next() {
+        currentIndex = (currentIndex + 1) % photos.length;
+        updateImage();
+    }
 
-        function prev() {
-            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-            updateImage();
-        }
+    function prev() {
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+        updateImage();
+    }
 
-        function updateImage() {
-            const imgTag = document.querySelector('.box img');
-            imgTag.src = photos[currentIndex];
-        }
-
-        function changeColors(color) {
-            document.getElementById('main-header').style.backgroundColor = color;
-            document.body.style.backgroundColor = color;
-        }
+    function updateImage() {
+        const imgTag = document.querySelector('.box img');
+        imgTag.src = photos[currentIndex].src;
+    }
     </script>
 </body>
 
