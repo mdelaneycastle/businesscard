@@ -109,7 +109,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="main-header">
         <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
     </header>
 
@@ -148,10 +148,10 @@
     </div>
 
     <div id="customColorPicker">
-        <button class="colorButton" style="background-color: #45494e;" onclick="changeBackgroundColor('#45494e')"></button>
-        <button class="colorButton" style="background-color: #FE828C;" onclick="changeBackgroundColor('#FE828C')"></button>
-        <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeBackgroundColor('#d8d1c5')"></button>
-        <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeBackgroundColor('#B6D0E2')"></button>
+        <button class="colorButton" style="background-color: #45494e;" onclick="changeHeaderColor('#45494e')"></button>
+        <button class="colorButton" style="background-color: #FE828C;" onclick="changeHeaderColor('#FE828C')"></button>
+        <button class="colorButton" style="background-color: #d8d1c5;" onclick="changeHeaderColor('#d8d1c5')"></button>
+        <button class="colorButton" style="background-color: #B6D0E2;" onclick="changeHeaderColor('#B6D0E2')"></button>
     </div>
 
     <script>
@@ -168,7 +168,7 @@
 
         function scrollRow(direction) {
             const boxContainer = document.querySelector('.box-container');
-            const boxWidth = document.querySelector('.box').offsetWidth + 10; // 10px for margin-right
+            const boxWidth = document.querySelector('.box').offsetWidth + 20; // 20px for margin
             currentIndex = Math.min(Math.max(currentIndex + direction, 0), boxContainer.children.length - 1);
             boxContainer.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
         }
@@ -189,8 +189,8 @@
             }
         });
 
-        function changeBackgroundColor(color) {
-            document.body.style.backgroundColor = color;
+        function changeHeaderColor(color) {
+            document.getElementById('main-header').style.backgroundColor = color;
         }
     </script>
 </body>
