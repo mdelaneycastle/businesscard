@@ -56,10 +56,17 @@
             height: auto;
         }
 
-        .arrow {
+        .arrow-container {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2; /* Set z-index to ensure arrows are on top */
+        }
+
+        .arrow {
             font-size: 24px;
             cursor: pointer;
             color: #fff;
@@ -71,11 +78,11 @@
         }
 
         .arrow-left {
-            left: 0;
+            order: 1; /* Adjust order to position left arrow on the left */
         }
 
         .arrow-right {
-            right: 0;
+            order: 2; /* Adjust order to position right arrow on the right */
         }
 
         .socials-container,
@@ -108,7 +115,10 @@
 
     <div id="main-box">
         <div id="rowofboxes">
-            <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
+            <div class="arrow-container">
+                <button class="arrow arrow-left" onclick="scrollRow(-1)">‹</button>
+                <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
+            </div>
             <div class="box-container" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)">
                 <div class="box" onclick="openPopup('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/')">
                     <img src="image1.jpg" alt="Image 1">
@@ -126,7 +136,6 @@
                     <img src="image4.jpg" alt="Image 4">
                 </div>
             </div>
-            <button class="arrow arrow-right" onclick="scrollRow(1)">›</button>
         </div>
 
         <div class="socials-container">
