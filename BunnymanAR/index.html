@@ -230,9 +230,35 @@
 
     // Check if the clicked image is associated with the "Multiverse" title
     if (title === 'Multiverse') {
-        // If it is, open the Multiverse.usdz file using AR Quick Look
-        const usdzUrl = 'https://raw.githack.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz';
-        window.location.href = `https://arquicklook.apple.com/?url=${encodeURIComponent(usdzUrl)}&title=${encodeURIComponent(title)}`;
+        // If it is, create a hidden anchor tag with the Multiverse.usdz file link
+        const usdzUrl = 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz';
+        const hiddenLink = document.createElement('a');
+        hiddenLink.rel = 'ar';
+        hiddenLink.href = usdzUrl;
+        hiddenLink.style.display = 'none';
+
+        // Create additional elements for the visual representation (optional)
+        const hiddenImage = document.createElement('img');
+        hiddenImage.src = ''; // You can set a placeholder image if needed
+        const arGlyphBackground = document.createElement('div');
+        arGlyphBackground.className = 'ar-glyph-background';
+        const arIcon = document.createElement('div');
+        arIcon.className = 'ar-icon';
+        const arText = document.createElement('div');
+        arText.className = 'ar-text';
+        arText.textContent = 'View in AR';
+
+        // Append the additional elements to the hidden anchor tag
+        hiddenLink.appendChild(hiddenImage);
+        hiddenLink.appendChild(arGlyphBackground);
+        arGlyphBackground.appendChild(arIcon);
+        arGlyphBackground.appendChild(arText);
+
+        // Append the hidden anchor tag to the document body
+        document.body.appendChild(hiddenLink);
+
+        // Trigger a click on the hidden anchor tag to open AR Quick Look
+        hiddenLink.click();
     } else {
         // For other titles, open the Sketchfab link in a new tab
         const newTab = window.open(url, '_blank');
