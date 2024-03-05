@@ -119,23 +119,6 @@
         #locationDetails {
             margin-top: 20px;
         }
-
-        
-
-.video-container {
-    position: relative;
-    max-width: 80%;
-    max-height: 80%;
-    margin: auto;
-}
-
-.video-container video {
-    width: 100%;
-    height: 100%;
-    border: 2px solid #fff;
-    border-radius: 8px;
-}
-
     </style>
 </head>
 
@@ -144,14 +127,6 @@
         <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
     </header>
 
-    <div class="video-modal" id="videoModal">
-        <span class="close-modal" onclick="closeVideoModal()">X</span>
-        <video controls autoplay onended="loadLink()">
-            <source src="JDE_AR_.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    
     <div id="main-box">
         <div id="rowofboxes">
             <div class="arrow-container">
@@ -252,100 +227,55 @@
         function openLink() {
     const title = photos[currentIndex].title;
     const url = photos[currentIndex].link;
-    const videoPath = 'JDE_AR_.mp4'; // Adjust the video path as needed
 
-    // Create the video modal container
-    const videoModal = document.getElementById('videoModal');
-    const videoContainer = document.createElement('div');
-    videoContainer.className = 'video-container';
+    // Check if the user is on an iPhone
+    if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
+        // If it is, create a hidden anchor tag with the USDZ file link for AR Quick Look
+        const usdzUrls = {
+            'Multiverse': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz',
+            'Origins': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Origins.usdz',
+            'Flowers': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Flowers.usdz',
+            'Cosmic': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Cosmic.usdz'
+        };
 
-    // Create the video element
-    const video = document.createElement('video');
-    video.src = videoPath;
-    video.controls = true;
+        if (usdzUrls[title]) {
+            const usdzUrl = usdzUrls[title];
+            const hiddenLink = document.createElement('a');
+            hiddenLink.rel = 'ar';
+            hiddenLink.href = usdzUrl;
+            hiddenLink.style.display = 'none';
 
-    // Append the video to the modal container
-    videoContainer.appendChild(video);
-    videoModal.appendChild(videoContainer);
+            // Create additional elements for the visual representation (optional)
+            const hiddenImage = document.createElement('img');
+            hiddenImage.src = ''; // You can set a placeholder image if needed
+            const arGlyphBackground = document.createElement('div');
+            arGlyphBackground.className = 'ar-glyph-background';
+            const arIcon = document.createElement('div');
+            arIcon.className = 'ar-icon';
+            const arText = document.createElement('div');
+            arText.className = 'ar-text';
+            arText.textContent = 'View in AR';
 
-    // Display the video modal
-    videoModal.style.display = 'flex';
+            // Append the additional elements to the hidden anchor tag
+            hiddenLink.appendChild(hiddenImage);
+            hiddenLink.appendChild(arGlyphBackground);
+            arGlyphBackground.appendChild(arIcon);
+            arGlyphBackground.appendChild(arText);
 
-    // Play the video
-    video.play();
+            // Append the hidden anchor tag to the document body
+            document.body.appendChild(hiddenLink);
 
-    // After the video finishes, trigger link loading
-    video.addEventListener('ended', function () {
-        // Hide the video modal
-        videoModal.style.display = 'none';
-
-        // Check if the user is on an iPhone
-        if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
-            // If it is, create a hidden anchor tag with the USDZ file link for AR Quick Look
-            const usdzUrls = {
-                'Multiverse': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz',
-                'Origins': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Origins.usdz',
-                'Flowers': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Flowers.usdz',
-                'Cosmic': 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Cosmic.usdz'
-            };
-
-            if (usdzUrls[title]) {
-                const usdzUrl = usdzUrls[title];
-                const hiddenLink = document.createElement('a');
-                hiddenLink.rel = 'ar';
-                hiddenLink.href = usdzUrl;
-                hiddenLink.style.display = 'none';
-
-                // Create additional elements for the visual representation (optional)
-                const hiddenImage = document.createElement('img');
-                hiddenImage.src = ''; // You can set a placeholder image if needed
-                const arGlyphBackground = document.createElement('div');
-                arGlyphBackground.className = 'ar-glyph-background';
-                const arIcon = document.createElement('div');
-                arIcon.className = 'ar-icon';
-                const arText = document.createElement('div');
-                arText.className = 'ar-text';
-                arText.textContent = 'View in AR';
-
-                // Append the additional elements to the hidden anchor tag
-                hiddenLink.appendChild(hiddenImage);
-                hiddenLink.appendChild(arGlyphBackground);
-                arGlyphBackground.appendChild(arIcon);
-                arGlyphBackground.appendChild(arText);
-
-                // Append the hidden anchor tag to the document body
-                document.body.appendChild(hiddenLink);
-
-                // Trigger a click on the hidden anchor tag to open AR Quick Look
-                hiddenLink.click();
-            }
-        } else if (/Android/i.test(navigator.userAgent)) {
-            // If it's an Android device, open the Sketchfab link
-            window.location.href = url;
-        } else {
-            // For other devices, open the Sketchfab link in a new tab
-            window.open(url, '_blank');
+            // Trigger a click on the hidden anchor tag to open AR Quick Look
+            hiddenLink.click();
         }
-
-        // Remove the video element from the modal container
-        videoContainer.removeChild(video);
-    });
+    } else if (/Android/i.test(navigator.userAgent)) {
+        // If it's an Android device, open the Sketchfab link
+        window.location.href = url;
+    } else {
+        // For other devices, open the Sketchfab link in a new tab
+        window.open(url, '_blank');
+    }
 }
-
-function closeVideoModal() {
-    const videoModal = document.getElementById('videoModal');
-    const videoContainer = document.querySelector('.video-container');
-    
-    // Pause and remove the video element
-    const video = videoContainer.querySelector('video');
-    video.pause();
-    videoContainer.removeChild(video);
-
-    // Hide the video modal
-    videoModal.style.display = 'none';
-}
-
-
 
 
 
