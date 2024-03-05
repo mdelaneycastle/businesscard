@@ -138,9 +138,9 @@
                     <img src="image1.jpg" alt="Origins">
                 </div>
 
-                <div class="box" onclick="openLink('https://sketchfab.com/models/540e6aa407a240c697754677e075ab7c/ar-redirect')">
-                    <img src="image2.jpg" alt="Multiverse">
-                </div>
+                <div class="box" onclick="openLink()">
+    <img src="image2.jpg" alt="Multiverse">
+</div>
 
                 <div class="box" onclick="openLink('https://sketchfab.com/models/274554bf5e024bd696b3d997a816a504/ar-redirect')">
                     <img src="image3.jpg" alt="Cosmic">
@@ -226,17 +226,25 @@
 
         function openLink() {
     const url = photos[currentIndex].link;
-    
-    const newTab = window.open(url, '_blank');
 
-    // Check if the user is on an iPhone
-    if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
-        // Close the new tab after 5 seconds
-        setTimeout(() => {
-            newTab.close();
-        }, 500);
+    // Check if the clicked image is associated with the "Multiverse" title
+    if (photos[currentIndex].title === 'Multiverse') {
+        // If it is, open the Multiverse.usdz file instead of the Sketchfab link
+        window.location.href = 'Multiverse.usdz';
+    } else {
+        // For other titles, open the Sketchfab link in a new tab
+        const newTab = window.open(url, '_blank');
+
+        // Check if the user is on an iPhone
+        if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
+            // Close the new tab after 5 seconds
+            setTimeout(() => {
+                newTab.close();
+            }, 5000);
+        }
     }
 }
+
 
         function next() {
             currentIndex = (currentIndex + 1) % photos.length;
