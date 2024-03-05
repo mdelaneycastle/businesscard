@@ -315,8 +315,13 @@
             phoneNumberSpan.textContent = phone;
 
             if (address) {
-                // Use the geo URI scheme to open the address in the default maps app
-                addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+                    // Use Apple Maps URL scheme for iOS devices
+                    addressSpan.innerHTML = `<a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                } else {
+                    // Use the geo URI scheme for other devices
+                    addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                }
             } else {
                 addressSpan.textContent = ''; // Clear the address if not available
             }
