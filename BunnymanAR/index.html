@@ -119,6 +119,34 @@
         #locationDetails {
             margin-top: 20px;
         }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 80%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .video-modal video {
+            max-width: 80%;
+            max-height: 80%;
+            border: 2px solid #fff;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -127,6 +155,14 @@
         <img src="toplogo.png" alt="Your Logo" style="max-width: 100%;">
     </header>
 
+    <div class="video-modal" id="videoModal">
+        <span class="close-modal" onclick="closeVideoModal()">X</span>
+        <video controls autoplay onended="loadLink()">
+            <source src="JDE_AR_.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
     <div id="main-box">
         <div id="rowofboxes">
             <div class="arrow-container">
@@ -233,6 +269,9 @@
     video.src = videoPath;
     video.style.display = 'none';
 
+    // Append the video to the body
+    document.body.appendChild(video);
+
     // Play the video
     video.play();
 
@@ -285,6 +324,9 @@
             // For other devices, open the Sketchfab link in a new tab
             window.open(url, '_blank');
         }
+
+        // Remove the video element from the body
+        document.body.removeChild(video);
     });
 }
 
