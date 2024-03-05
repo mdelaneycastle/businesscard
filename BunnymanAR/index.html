@@ -229,8 +229,9 @@
 
     // Check if the clicked image is associated with the "Multiverse" title
     if (photos[currentIndex].title === 'Multiverse') {
-        // If it is, open the Multiverse.usdz file instead of the Sketchfab link
-        window.location.href = 'Multiverse.usdz';
+        // If it is, open the Multiverse.usdz file using AR Quick Look
+        window.location.href = `https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz`;
+        // Replace 'https://example.com/path/to/Multiverse.usdz' with the actual path to your Multiverse.usdz file
     } else {
         // For other titles, open the Sketchfab link in a new tab
         const newTab = window.open(url, '_blank');
@@ -244,6 +245,7 @@
         }
     }
 }
+
 
 
         function next() {
