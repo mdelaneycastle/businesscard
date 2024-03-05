@@ -228,50 +228,48 @@
     const title = photos[currentIndex].title;
     const url = photos[currentIndex].link;
 
-    // Check if the clicked image is associated with the "Multiverse" title
-    if (title === 'Multiverse') {
-        // If it is, create a hidden anchor tag with the Multiverse.usdz file link
-        const usdzUrl = 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz';
-        const hiddenLink = document.createElement('a');
-        hiddenLink.rel = 'ar';
-        hiddenLink.href = usdzUrl;
-        hiddenLink.style.display = 'none';
+    // Check if the user is on an iPhone
+    if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
+        // If it is, create a hidden anchor tag with the Multiverse.usdz file link for AR Quick Look
+        if (title === 'Multiverse') {
+            const usdzUrl = 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz';
+            const hiddenLink = document.createElement('a');
+            hiddenLink.rel = 'ar';
+            hiddenLink.href = usdzUrl;
+            hiddenLink.style.display = 'none';
 
-        // Create additional elements for the visual representation (optional)
-        const hiddenImage = document.createElement('img');
-        hiddenImage.src = ''; // You can set a placeholder image if needed
-        const arGlyphBackground = document.createElement('div');
-        arGlyphBackground.className = 'ar-glyph-background';
-        const arIcon = document.createElement('div');
-        arIcon.className = 'ar-icon';
-        const arText = document.createElement('div');
-        arText.className = 'ar-text';
-        arText.textContent = 'View in AR';
+            // Create additional elements for the visual representation (optional)
+            const hiddenImage = document.createElement('img');
+            hiddenImage.src = ''; // You can set a placeholder image if needed
+            const arGlyphBackground = document.createElement('div');
+            arGlyphBackground.className = 'ar-glyph-background';
+            const arIcon = document.createElement('div');
+            arIcon.className = 'ar-icon';
+            const arText = document.createElement('div');
+            arText.className = 'ar-text';
+            arText.textContent = 'View in AR';
 
-        // Append the additional elements to the hidden anchor tag
-        hiddenLink.appendChild(hiddenImage);
-        hiddenLink.appendChild(arGlyphBackground);
-        arGlyphBackground.appendChild(arIcon);
-        arGlyphBackground.appendChild(arText);
+            // Append the additional elements to the hidden anchor tag
+            hiddenLink.appendChild(hiddenImage);
+            hiddenLink.appendChild(arGlyphBackground);
+            arGlyphBackground.appendChild(arIcon);
+            arGlyphBackground.appendChild(arText);
 
-        // Append the hidden anchor tag to the document body
-        document.body.appendChild(hiddenLink);
+            // Append the hidden anchor tag to the document body
+            document.body.appendChild(hiddenLink);
 
-        // Trigger a click on the hidden anchor tag to open AR Quick Look
-        hiddenLink.click();
-    } else {
-        // For other titles, open the Sketchfab link in a new tab
-        const newTab = window.open(url, '_blank');
-
-        // Check if the user is on an iPhone
-        if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
-            // Close the new tab after 5 seconds
-            setTimeout(() => {
-                newTab.close();
-            }, 5000);
+            // Trigger a click on the hidden anchor tag to open AR Quick Look
+            hiddenLink.click();
         }
+    } else if (/Android/i.test(navigator.userAgent)) {
+        // If it's an Android device, open the AR Redirect link
+        window.location.href = url;
+    } else {
+        // For other devices, open the Sketchfab link in a new tab
+        window.open(url, '_blank');
     }
 }
+
 
 
 
