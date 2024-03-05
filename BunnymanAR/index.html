@@ -308,20 +308,24 @@
 
             const selectedLocation = locationSelect.value;
 
-            if (locationData[selectedLocation]) {
-                const { address, phone } = locationData[selectedLocation];
+        if (locationData[selectedLocation]) {
+            const { address, phone } = locationData[selectedLocation];
 
-                addressSpan.textContent = address;
-                phoneNumberSpan.textContent = phone;
+            addressSpan.textContent = address;
+            phoneNumberSpan.textContent = phone;
 
-                // You can add a link to open the address in a maps app
-                addressSpan.innerHTML = `<a href="https://maps.google.com?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
-
-                locationDetails.style.display = 'block';
+            if (address) {
+                // Use the geo URI scheme to open the address in the default maps app
+                addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
             } else {
-                locationDetails.style.display = 'none';
+                addressSpan.textContent = ''; // Clear the address if not available
             }
+
+            locationDetails.style.display = 'block';
+        } else {
+            locationDetails.style.display = 'none';
         }
+    }
     </script>
 </body>
 
