@@ -225,13 +225,14 @@
         let currentIndex = 0;
 
         function openLink() {
+    const title = photos[currentIndex].title;
     const url = photos[currentIndex].link;
 
     // Check if the clicked image is associated with the "Multiverse" title
-    if (photos[currentIndex].title === 'Multiverse') {
+    if (title === 'Multiverse') {
         // If it is, open the Multiverse.usdz file using AR Quick Look
-        window.location.href = `https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz`;
-        // Replace 'https://example.com/path/to/Multiverse.usdz' with the actual path to your Multiverse.usdz file
+        const usdzUrl = 'https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/Multiverse.usdz';
+        window.location.href = `https://arquicklook.apple.com/?url=${encodeURIComponent(usdzUrl)}&title=${encodeURIComponent(title)}`;
     } else {
         // For other titles, open the Sketchfab link in a new tab
         const newTab = window.open(url, '_blank');
