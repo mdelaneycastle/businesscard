@@ -225,9 +225,18 @@
         let currentIndex = 0;
 
         function openLink() {
-            const url = photos[currentIndex].link;
-            window.open(url, '_blank');
-        }
+    const url = photos[currentIndex].link;
+    
+    const newTab = window.open(url, '_blank');
+
+    // Check if the user is on an iPhone
+    if (navigator.platform === 'iPhone' || navigator.platform === 'iPad' || navigator.platform === 'iPod') {
+        // Close the new tab after 5 seconds
+        setTimeout(() => {
+            newTab.close();
+        }, 2000);
+    }
+}
 
         function next() {
             currentIndex = (currentIndex + 1) % photos.length;
