@@ -335,6 +335,7 @@
             const locationDetails = document.getElementById('locationDetails');
             const addressSpan = document.getElementById('address');
             const phoneNumberSpan = document.getElementById('phoneNumber');
+            const emailSpan = document.getElementById('email');
 
             // Sample data (replace with your actual data)
             const locationData = {
@@ -386,6 +387,7 @@
 
             addressSpan.textContent = address;
             phoneNumberSpan.textContent = phone;
+            emailSpan.textcontent = email;
 
             if (address) {
                 if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
