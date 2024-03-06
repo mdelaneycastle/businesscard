@@ -262,6 +262,8 @@
             hiddenLink.rel = 'ar';
             hiddenLink.href = usdzUrl;
             hiddenLink.style.display = 'none';
+            hiddenLink.setAttribute('disable-zoom', 'true'); // Disable zooming
+
 
             // Create additional elements for the visual representation (optional)
             const hiddenImage = document.createElement('img');
