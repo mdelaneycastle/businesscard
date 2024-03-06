@@ -333,11 +333,15 @@
         }
 
          function showLocationDetails() {
-            const locationSelect = document.getElementById('locationSelect');
-            const locationDetails = document.getElementById('locationDetails');
-            const addressSpan = document.getElementById('address');
-            const phoneNumberSpan = document.getElementById('phoneNumber');
-            const emailSpan = document.getElementById('email');
+    const locationSelect = document.getElementById('locationSelect');
+    const locationDetails = document.getElementById('locationDetails');
+    const addressSpan = document.getElementById('address');
+    const phoneNumberSpan = document.getElementById('phoneNumber');
+    const emailSpan = document.getElementById('email');
+
+    // Reset content before updating
+    phoneNumberSpan.textContent = '';
+    emailSpan.textContent = '';
              
             // Sample data (replace with your actual data)
             const locationData = {
@@ -382,10 +386,10 @@
                 // Add more data for each location
             };
 
-            const selectedLocation = locationSelect.value;
+           const selectedLocation = locationSelect.value;
 
-            if (locationData[selectedLocation]) {
-                const { address, phone, email } = locationData[selectedLocation];
+    if (locationData[selectedLocation]) {
+        const { address, phone, email } = locationData[selectedLocation];
 
                 // Check if any of the details are available
                 if (address) {
@@ -414,13 +418,11 @@
                     emailSpan.innerHTML = ''; // Clear the email if not available
                 }
 
-                // Display the location details
                 locationDetails.style.display = 'block';
-            } else {
-                // Hide the location details if no option is selected or data is not available
-                locationDetails.style.display = 'none';
-            }
-        }
+    } else {
+        locationDetails.style.display = 'none';
+    }
+}
     </script>
 </body>
 
