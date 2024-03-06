@@ -339,11 +339,13 @@
     const phoneNumberSpan = document.getElementById('phoneNumber');
     const emailSpan = document.getElementById('email');
 
-    // Reset content before updating
+    // Clear content before updating
+    addressSpan.textContent = '';
     phoneNumberSpan.textContent = '';
     emailSpan.textContent = '';
-             
-            // Sample data (replace with your actual data)
+
+    // Sample data (replace with your actual data)
+    
             const locationData = {
                 'Bath': { address: 'Castle Fine Art, 13 Bond Street, Bath, BA1 1BP', phone: '01225789298', email: 'bath@castlefineart.com' },
                 'BirminghamICC': { address: 'Castle Fine Art, International Convention Centre, Broad Street, Birmingham, B1 2EA', phone: '01212488484', email:'icc@castlefineart.com' },
@@ -386,39 +388,27 @@
                 // Add more data for each location
             };
 
-           const selectedLocation = locationSelect.value;
+           cconst selectedLocation = locationSelect.value;
 
     if (locationData[selectedLocation]) {
         const { address, phone, email } = locationData[selectedLocation];
 
-                // Check if any of the details are available
-                if (address) {
-                    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-                        // Use Apple Maps URL scheme for iOS devices
-                        addressSpan.innerHTML = `<p><strong> </strong><a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a></p>`;
-                    } else {
-                        // Use the geo URI scheme for other devices
-                        addressSpan.innerHTML = `<p><strong> </strong><a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a></p>`;
-                    }
-                } else {
-                    addressSpan.innerHTML = ''; // Clear the address if not available
-                }
+        // Check if any of the details are available
+        if (address) {
+            addressSpan.textContent = ` ${address}`;
+        }
 
-                // Check if phone number is available
-                if (phone) {
-                    phoneNumberSpan.innerHTML = `<p><strong>T:</strong> ${phone}</p>`;
-                } else {
-                    phoneNumberSpan.innerHTML = ''; // Clear the phone number if not available
-                }
+        // Check if phone number is available
+        if (phone) {
+            phoneNumberSpan.textContent = `T: ${phone}`;
+        }
 
-                // Check if email is available
-                if (email) {
-                    emailSpan.innerHTML = `<p><strong>E:</strong> ${email}</p>`;
-                } else {
-                    emailSpan.innerHTML = ''; // Clear the email if not available
-                }
+        // Check if email is available
+        if (email) {
+            emailSpan.textContent = `E: ${email}`;
+        }
 
-                locationDetails.style.display = 'block';
+        locationDetails.style.display = 'block';
     } else {
         locationDetails.style.display = 'none';
     }
