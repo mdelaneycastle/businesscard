@@ -208,9 +208,9 @@
         </select>
 
         <div id="locationDetails">
-            <p><strong> </strong><span id="address"></span></p>
-            <p><strong>T:</strong><span id="phoneNumber"></span></p>
-            <p><strong>E:</strong><span id="email"></span></p>
+            <p><strong>Address:</strong> <span id="address"></span></p>
+            <p><strong>Phone Number:</strong> <span id="phoneNumber"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
         </div>
 
         <div class="socials-container">
@@ -330,13 +330,13 @@
             document.body.style.backgroundColor = color;
         }
 
-        function showLocationDetails() {
+         function showLocationDetails() {
             const locationSelect = document.getElementById('locationSelect');
             const locationDetails = document.getElementById('locationDetails');
             const addressSpan = document.getElementById('address');
             const phoneNumberSpan = document.getElementById('phoneNumber');
             const emailSpan = document.getElementById('email');
-
+             
             // Sample data (replace with your actual data)
             const locationData = {
                 'Bath': { address: 'Castle Fine Art, 13 Bond Street, Bath, BA1 1BP', phone: '01225789298', email: 'bath@castlefineart.com' },
@@ -382,30 +382,30 @@
 
             const selectedLocation = locationSelect.value;
 
-        if (locationData[selectedLocation]) {
-            const { address, phone } = locationData[selectedLocation];
+            if (locationData[selectedLocation]) {
+                const { address, phone, email } = locationData[selectedLocation];
 
-            addressSpan.textContent = address;
-            phoneNumberSpan.textContent = phone;
-            emailSpan.textContent = email;
+                addressSpan.textContent = address;
+                phoneNumberSpan.textContent = phone;
+                emailSpan.textContent = email;
 
-            if (address) {
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-                    // Use Apple Maps URL scheme for iOS devices
-                    addressSpan.innerHTML = `<a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                if (address) {
+                    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+                        // Use Apple Maps URL scheme for iOS devices
+                        addressSpan.innerHTML = `<a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                    } else {
+                        // Use the geo URI scheme for other devices
+                        addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                    }
                 } else {
-                    // Use the geo URI scheme for other devices
-                    addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                    addressSpan.textContent = ''; // Clear the address if not available
                 }
-            } else {
-                addressSpan.textContent = ''; // Clear the address if not available
-            }
 
-            locationDetails.style.display = 'block';
-        } else {
-            locationDetails.style.display = 'none';
+                locationDetails.style.display = 'block';
+            } else {
+                locationDetails.style.display = 'none';
+            }
         }
-    }
     </script>
 </body>
 
