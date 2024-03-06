@@ -208,9 +208,9 @@
         </select>
 
         <div id="locationDetails">
-            <p><strong>Address:</strong> <span id="address"></span></p>
-            <p><strong>Phone Number:</strong> <span id="phoneNumber"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong> </strong> <span id="address"></span></p>
+            <p><strong>T:</strong> <span id="phoneNumber"></span></p>
+            <p><strong>E:</strong> <span id="email"></span></p>
         </div>
 
         <div class="socials-container">
@@ -385,24 +385,37 @@
             if (locationData[selectedLocation]) {
                 const { address, phone, email } = locationData[selectedLocation];
 
-                addressSpan.textContent = address;
-                phoneNumberSpan.textContent = phone;
-                emailSpan.textContent = email;
-
+                // Check if any of the details are available
                 if (address) {
                     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
                         // Use Apple Maps URL scheme for iOS devices
-                        addressSpan.innerHTML = `<a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                        addressSpan.innerHTML = `<p><strong> </strong><a href="http://maps.apple.com/?q=${encodeURIComponent(address)}" target="_blank">${address}</a></p>`;
                     } else {
                         // Use the geo URI scheme for other devices
-                        addressSpan.innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a>`;
+                        addressSpan.innerHTML = `<p><strong> </strong><a href="geo:0,0?q=${encodeURIComponent(address)}" target="_blank">${address}</a></p>`;
                     }
                 } else {
-                    addressSpan.textContent = ''; // Clear the address if not available
+                    addressSpan.innerHTML = ''; // Clear the address if not available
                 }
 
+                // Check if phone number is available
+                if (phone) {
+                    phoneNumberSpan.innerHTML = `<p><strong>T:</strong> ${phone}</p>`;
+                } else {
+                    phoneNumberSpan.innerHTML = ''; // Clear the phone number if not available
+                }
+
+                // Check if email is available
+                if (email) {
+                    emailSpan.innerHTML = `<p><strong>E:</strong> ${email}</p>`;
+                } else {
+                    emailSpan.innerHTML = ''; // Clear the email if not available
+                }
+
+                // Display the location details
                 locationDetails.style.display = 'block';
             } else {
+                // Hide the location details if no option is selected or data is not available
                 locationDetails.style.display = 'none';
             }
         }
