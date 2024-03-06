@@ -208,8 +208,9 @@
         </select>
 
         <div id="locationDetails">
-            <p><strong>Address:</strong> <span id="address"></span></p>
-            <p><strong>Phone Number:</strong> <span id="phoneNumber"></span></p>
+            <p><span id="address"></span></p>
+            <p><span id="phoneNumber"></span></p>
+            <p><span id="email"></span></p>
         </div>
 
         <div class="socials-container">
@@ -337,44 +338,44 @@
 
             // Sample data (replace with your actual data)
             const locationData = {
-                'Bath': { address: 'Castle Fine Art, 13 Bond Street, Bath, BA1 1BP', phone: '01225789298' },
-                'BirminghamICC': { address: 'Castle Fine Art, International Convention Centre, Broad Street, Birmingham, B1 2EA', phone: '01212488484' },
-                'BirminghamMailbox': { address: 'Castle Fine Art, Level 2, The Mailbox, 5 Wharfside, Birmingham, B1 1RD', phone: '01216330015' },
-                'Brighton': { address: 'Castle Fine Art, 55-56 East Street, Brighton BN1 1HN', phone: '01273761495' },
-                'Bristol': { address: 'Castle Fine Art, 3 Philadelphia Street, Quaker Friars, Bristol, BS1 3BZ', phone: '01172800234' },
-    'Cambridge': { address: 'Castle Fine Art, Level 2, Grand Arcade, St. Andrews Street, CB2 3BJ', phone: '01223307402' },
-    'Canterbury': { address: 'Castle Fine Art, 41-42 Burgate, Canterbury, Kent, CT1 2HW', phone: '01227696033' },
-    'Cardiff': { address: 'Castle Fine Art, Grand Arcade, St Davids Dewi Saint, Cardiff, CF10 2ER', phone: '02922130100' },
-    'Cheltenham': { address: 'Castle Fine Art, 82a The Promenade, Cheltenham, Gloucestershire, GL50 1NB', phone: '01242806807' },
-    'Chester': { address: 'Castle Fine Art, 11 St.Michaels Row, The Grosvenor Shopping Centre, Chester, CH1 1EF', phone: '01244345800' },
-    'Derby': { address: 'Castle Fine Art, SU249, Level 2, East Mall, Derbion, Derby, DE1 2PL', phone: '01332209333' },
-    'Edinburgh': { address: 'Castle Fine Art, 12 Multrees Walk Shopping Centre, St Andrews Square, Edinburgh, EH1 3DQ', phone: '01312619181' },
-    'Exeter': { address: 'Castle Fine Art, 18 Cathedral Yard, Exeter, EX1 1HB', phone: '01392425242' },
-    'Glasgow': { address: 'Castle Fine Art, 96 Queen Street, Glasgow, G1 3DN', phone: '01412216867' },
-    'Guildford': { address: 'Castle Fine Art, 180 High Street, Guildford, Surrey, GU1 3HW', phone: '01483566222' },
-    'Harrogate': { address: 'Castle Fine Art, 2-6 James Street, Harrogate, HG1 1RF', phone: '01423569656' },
-    'KentBluewater': { address: 'Castle Fine Art, Upper Rose Galleries, Bluewater Shopping Centre, Greenhithe, Kent, DA9 9ST', phone: '01322380038' },
-    'LeamingtonSpa': { address: 'Castle Fine Art, 64a Regent Street, Leamington Spa, CV32 5EG', phone: '01926335822' },
-    'Leeds': { address: 'Castle Fine Art, 38-40 The Victoria Quarter, Leeds, LS1 6BE', phone: '01132456873' },
-    'Liverpool': { address: 'Castle Fine Art, 24 Church Alley, Liverpool, L1 3DD', phone: '01513700123' },
-    'LondonCoventGarden': { address: 'Castle Fine Art, 20 New Row, Covent Garden, London, WC2N 4LA', phone: '02073790397' },
-    'LondonMoltonStreet': { address: 'Castle Fine Art, 57 South Molton Street, London, W1K 5SJ', phone: '02076292282' },
-    'LondonStChristophersPlace': { address: 'Castle Fine Art, 25-26 St Christophers Place, London, W1U 1NT', phone: '02079356790' },
-    'Manchester': { address: 'Castle Fine Art, 12-14 King Street, Manchester, M2 6AG', phone: '01614140002' },
-    'Marlow': { address: 'Castle Fine Art, 6 Market Square, Buckinghamshire, SL7 1DA', phone: '01628944045' },
-    'MiltonKeynes': { address: 'Castle Fine Art, 17 Acorn Walk, The Centre: MK, Milton Keynes, MK9 3AD', phone: '01908696040' },
-    'NewYorkCastleContemporary': { address: 'Castle Contemporary, 413 West Broadway, Soho, New York, 10012-3702', phone: '2123373203' },
-    'Newcastle': { address: 'Castle Fine Art, 61-67 Grey Street, Newcastle Upon Tyne, NE1 6EF', phone: '01912332200' },
-    'Norwich': { address: 'Castle Fine Art, 27-29 Castle Street, Norwich, NR2 1PN', phone: '01603665978' },
-    'Nottingham': { address: 'Castle Fine Art, 8-10 Exchange Arcade, Nottingham, NG1 2DD', phone: '01159583883' },
-    'Oxford': { address: 'Castle Fine Art, South Arcade, Lower Ground Floor, Westgate, Oxford, OX1 1TR', phone: '01865689862' },
-    'Reading': { address: 'Castle Fine Art, 5 Chain Street, Reading, RG1 2HX', phone: '01189590300' },
-    'SheffieldMeadowhall': { address: 'Castle Fine Art, Meadowhall Shopping Centre, Sheffield, S9 1EL', phone: '01142569777' },
-    'Stamford': { address: 'Castle Fine Art, 30 High Street, Stamford, Lincolnshire, PE9 2BB', phone: '01780663006' },
-    'StratfordUponAvon': { address: 'Castle Fine Art, 40 Wood Street, Stratford Upon Avon, CV37 6JG', phone: '01789262031' },
-    'TunbridgeWells': { address: 'Castle Fine Art, 45 High Street, Tunbridge Wells, Kent, TN1 1XL', phone: '01892267070' },
-    'Windsor': { address: 'Castle Fine Art, Unit 24, Windsor Royal Station, Windsor, SL4 1PJ', phone: '01753840404' },
-    'York': { address: 'Castle Fine Art, 4 St. Helens Square, York, YO1 8QP', phone: '01904625100' }
+                'Bath': { address: 'Castle Fine Art, 13 Bond Street, Bath, BA1 1BP', phone: '01225789298', email: 'bath@castlefineart.com' },
+                'BirminghamICC': { address: 'Castle Fine Art, International Convention Centre, Broad Street, Birmingham, B1 2EA', phone: '01212488484', email:'icc@castlefineart.com' },
+                'BirminghamMailbox': { address: 'Castle Fine Art, Level 2, The Mailbox, 5 Wharfside, Birmingham, B1 1RD', phone: '01216330015', email:'mailbox@castlefineart.com' },
+                'Brighton': { address: 'Castle Fine Art, 55-56 East Street, Brighton BN1 1HN', phone: '01273761495' email: 'brighton@castlefineart.com'},
+                'Bristol': { address: 'Castle Fine Art, 3 Philadelphia Street, Quaker Friars, Bristol, BS1 3BZ', phone: '01172800234', email: 'bristol@castlefineart.com' },
+    'Cambridge': { address: 'Castle Fine Art, Level 2, Grand Arcade, St. Andrews Street, CB2 3BJ', phone: '01223307402',email: 'cambridge@castlefineart.com' },
+    'Canterbury': { address: 'Castle Fine Art, 41-42 Burgate, Canterbury, Kent, CT1 2HW', phone: '01227696033', email:'canterbury@castlefineart.com' },
+    'Cardiff': { address: 'Castle Fine Art, Grand Arcade, St Davids Dewi Saint, Cardiff, CF10 2ER', phone: '02922130100', email:'cardiff@castlefineart.com' },
+    'Cheltenham': { address: 'Castle Fine Art, 82a The Promenade, Cheltenham, Gloucestershire, GL50 1NB', phone: '01242806807', email:'cheltenham@castlefineart.com' },
+    'Chester': { address: 'Castle Fine Art, 11 St.Michaels Row, The Grosvenor Shopping Centre, Chester, CH1 1EF', phone: '01244345800', email:'chester@castlefineart.com' },
+    'Derby': { address: 'Castle Fine Art, SU249, Level 2, East Mall, Derbion, Derby, DE1 2PL', phone: '01332209333' , email:'derby@castlefineart.com'},
+    'Edinburgh': { address: 'Castle Fine Art, 12 Multrees Walk Shopping Centre, St Andrews Square, Edinburgh, EH1 3DQ', phone: '01312619181', email:'edinburgh@castlefineart.com' },
+    'Exeter': { address: 'Castle Fine Art, 18 Cathedral Yard, Exeter, EX1 1HB', phone: '01392425242', email:'exeter@castlefineart.com' },
+    'Glasgow': { address: 'Castle Fine Art, 96 Queen Street, Glasgow, G1 3DN', phone: '01412216867', email:'glasgow@castlefineart.com' },
+    'Guildford': { address: 'Castle Fine Art, 180 High Street, Guildford, Surrey, GU1 3HW', phone: '01483566222', email:'guildford@castlefineart.com' },
+    'Harrogate': { address: 'Castle Fine Art, 2-6 James Street, Harrogate, HG1 1RF', phone: '01423569656', email:'harrogate@castlefineart.com' },
+    'KentBluewater': { address: 'Castle Fine Art, Upper Rose Galleries, Bluewater Shopping Centre, Greenhithe, Kent, DA9 9ST', phone: '01322380038', email:'bluewater@castlefineart.com' },
+    'LeamingtonSpa': { address: 'Castle Fine Art, 64a Regent Street, Leamington Spa, CV32 5EG', phone: '01926335822', email:'leamington@castlefineart.com' },
+    'Leeds': { address: 'Castle Fine Art, 38-40 The Victoria Quarter, Leeds, LS1 6BE', phone: '01132456873', email:'leeds@castlefineart.com' },
+    'Liverpool': { address: 'Castle Fine Art, 24 Church Alley, Liverpool, L1 3DD', phone: '01513700123' , email:'liverpool@castlefineart.com'},
+    'LondonCoventGarden': { address: 'Castle Fine Art, 20 New Row, Covent Garden, London, WC2N 4LA', phone: '02073790397', email:'cgn@castlefineart.com' },
+    'LondonMoltonStreet': { address: 'Castle Fine Art, 57 South Molton Street, London, W1K 5SJ', phone: '02076292282', email:'sms@castlefineart.com' },
+    'LondonStChristophersPlace': { address: 'Castle Fine Art, 25-26 St Christophers Place, London, W1U 1NT', phone: '02079356790', email:'scp@castlefineart.com' },
+    'Manchester': { address: 'Castle Fine Art, 12-14 King Street, Manchester, M2 6AG', phone: '01614140002', email:'manchester@castlefineart.com' },
+    'Marlow': { address: 'Castle Fine Art, 6 Market Square, Buckinghamshire, SL7 1DA', phone: '01628944045', email:'marlow@castlefineart.com' },
+    'MiltonKeynes': { address: 'Castle Fine Art, 17 Acorn Walk, The Centre: MK, Milton Keynes, MK9 3AD', phone: '01908696040', email:'miltonkeynes@castlefineart.com' },
+    'NewYorkCastleContemporary': { address: 'Castle Contemporary, 413 West Broadway, Soho, New York, 10012-3702', phone: '2123373203', email:'hello@castlecontemporary.com' },
+    'Newcastle': { address: 'Castle Fine Art, 61-67 Grey Street, Newcastle Upon Tyne, NE1 6EF', phone: '01912332200', email:'newcastle@castlefineart.com' },
+    'Norwich': { address: 'Castle Fine Art, 27-29 Castle Street, Norwich, NR2 1PN', phone: '01603665978', email:'norwich@castlefineart.com' },
+    'Nottingham': { address: 'Castle Fine Art, 8-10 Exchange Arcade, Nottingham, NG1 2DD', phone: '01159583883', email:'nottingham@castlefineart.com' },
+    'Oxford': { address: 'Castle Fine Art, South Arcade, Lower Ground Floor, Westgate, Oxford, OX1 1TR', phone: '01865689862', email:'oxford@castlefineart.com' },
+    'Reading': { address: 'Castle Fine Art, 5 Chain Street, Reading, RG1 2HX', phone: '01189590300', email:'reading@castlefineart.com' },
+    'SheffieldMeadowhall': { address: 'Castle Fine Art, Meadowhall Shopping Centre, Sheffield, S9 1EL', phone: '01142569777', email:'meadowhall@castlefineart.com' },
+    'Stamford': { address: 'Castle Fine Art, 30 High Street, Stamford, Lincolnshire, PE9 2BB', phone: '01780663006', email:'stamford@castlefineart.com'},
+    'StratfordUponAvon': { address: 'Castle Fine Art, 40 Wood Street, Stratford Upon Avon, CV37 6JG', phone: '01789262031', email:'stratford@castlefineart.com' },
+    'TunbridgeWells': { address: 'Castle Fine Art, 45 High Street, Tunbridge Wells, Kent, TN1 1XL', phone: '01892267070' ,email:'tunbridgewells@castlefineart.com'},
+    'Windsor': { address: 'Castle Fine Art, Unit 24, Windsor Royal Station, Windsor, SL4 1PJ', phone: '01753840404', email:'windsor@castlefineart.com' },
+    'York': { address: 'Castle Fine Art, 4 St. Helens Square, York, YO1 8QP', phone: '01904625100', email:'york@castlefineart.com' }
                 // Add more data for each location
             };
 
