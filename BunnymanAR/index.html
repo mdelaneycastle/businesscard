@@ -209,9 +209,9 @@
         </select>
 
         <div id="locationDetails">
-    <p><strong>Address:</strong> <a id="addressLink" href="#" onclick="openMap()"> </a></p>
-    <p><strong>Email:</strong> <a id="emailLink" href="#" onclick="sendEmail()"> </a></p>
-    <p><strong>Phone:</strong> <a id="phoneLink" href="#" onclick="callNumber()"> </a></p>
+    <p><strong> </strong> <span id="address"></span></p>
+    <p><strong>T:</strong> <span id="phoneNumber"></span></p>
+    <p><strong>E:</strong> <span id="email"></span></p>
 </div>
         
 
@@ -390,25 +390,22 @@
 
            const selectedLocation = locationSelect.value;
 
-     if (locationData[selectedLocation]) {
+    if (locationData[selectedLocation]) {
         const { address, phone, email } = locationData[selectedLocation];
 
         // Check if any of the details are available
         if (address) {
-            document.getElementById('addressLink').textContent = address;
-            document.getElementById('addressLink').href = `geo:0,0?q=${encodeURIComponent(address)}`;
+            addressSpan.textContent = ` ${address}`;
         }
 
         // Check if phone number is available
         if (phone) {
-            document.getElementById('phoneLink').textContent = phone;
-            document.getElementById('phoneLink').href = `tel:${phone}`;
+            phoneNumberSpan.textContent = `${phone}`;
         }
 
         // Check if email is available
         if (email) {
-            document.getElementById('emailLink').textContent = email;
-            document.getElementById('emailLink').href = `mailto:${email}`;
+            emailSpan.textContent = `${email}`;
         }
 
         locationDetails.style.display = 'block';
