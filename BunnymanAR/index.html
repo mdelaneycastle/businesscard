@@ -359,7 +359,7 @@
     // Clear content before updating
     addressSpan.innerHTML = '';
     phoneNumberSpan.textContent = '';
-    emailSpan.textContent = '';
+    emailSpan.innerHTML = '';
 
     // Sample data (replace with your actual data)
     const locationData = {
@@ -428,7 +428,12 @@
 
         // Check if email is available
         if (email) {
-            emailSpan.textContent = `${email}`;
+            // Create a clickable mailto link for the email
+            const emailLink = document.createElement('a');
+            emailLink.textContent = email;
+            emailLink.href = `mailto:${email}`;
+            emailLink.style.cursor = 'pointer';
+            emailSpan.appendChild(emailLink);
         }
 
         locationDetails.style.display = 'block';
@@ -436,7 +441,6 @@
         locationDetails.style.display = 'none';
     }
 }
-
 function getMapLink(address) {
     const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
     const isAndroid = /Android/.test(navigator.userAgent);
