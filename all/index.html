@@ -141,7 +141,7 @@
 
     <main>
 
-      <div id="Jason" class="profile-image">
+      <div id="jason" class="profile-image">
             <img src="jason.jpg" alt="Marc Image">
         </div>
 
@@ -161,7 +161,7 @@
             Bunnyman AR
         </button>
 
-      <div id="Marc" class="profile-image">
+      <div id="marc" class="profile-image">
             <img src="marc.jpg" alt="Marc Image">
         </div>
 
@@ -196,31 +196,30 @@
 
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var buttons = document.querySelectorAll('.slide-in');
-            buttons.forEach(function (button, index) {
-                button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
-            });
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var buttons = document.querySelectorAll('.slide-in');
+        buttons.forEach(function (button, index) {
+            button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
         });
 
         // Read the URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const personToShow = urlParams.get('person');
+        const urlParams = new URLSearchParams(window.location.search);
+        const personToShow = urlParams.get('person');
 
-            // Hide all profile sections by default
-            const profileSections = document.querySelectorAll('.profile-image');
-            profileSections.forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // Show the section for the specified person
-            const selectedSection = document.getElementById(personToShow);
-            if (selectedSection) {
-                selectedSection.style.display = 'block';
-            }
+        // Hide all profile sections by default
+        const profileSections = document.querySelectorAll('.profile-image');
+        profileSections.forEach(section => {
+            section.style.display = 'none';
         });
-    </script>
+
+        // Show the section for the specified person
+        const selectedSection = document.getElementById(personToShow);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+    });
+</script>
 
 </body>
 </html>
