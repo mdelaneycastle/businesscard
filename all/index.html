@@ -203,6 +203,23 @@
                 button.style.animationDelay = (index * 0.1) + "s"; // Adjust the delay as needed
             });
         });
+
+        // Read the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const personToShow = urlParams.get('person');
+
+            // Hide all profile sections by default
+            const profileSections = document.querySelectorAll('.profile-image');
+            profileSections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the section for the specified person
+            const selectedSection = document.getElementById(personToShow);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        });
     </script>
 
 </body>
