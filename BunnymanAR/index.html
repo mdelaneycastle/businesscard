@@ -133,6 +133,26 @@
     cursor: pointer;
     /* Add any additional styling as needed */
 }
+
+#youtubeButton {
+    width: 150px; /* Adjust the width as needed */
+    background-color: #ff0000; /* YouTube red */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#youtubeButton:hover {
+    background-color: #cc0000; /* Darker shade of red on hover */
+}
+
+#button-container {
+    text-align: center;
+    margin-top: 10px;
+}
     </style>
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E865KY0B8"></script>
@@ -181,6 +201,10 @@
             <div class="image-title">"Origins"</div>
             <div class="artist-name">Johnny Depp</div>
         </div>
+
+<div id="button-container">
+    <button id="youtubeButton" onclick="openYouTube()">The Bunnyman Story</button>
+</div>
 
         
         <select id="locationSelect" onchange="showLocationDetails()">
