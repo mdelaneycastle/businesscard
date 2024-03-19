@@ -135,14 +135,15 @@
 }
 
 #youtubeButton {
-    width: 150px; /* Adjust the width as needed */
+    width: auto; /* Allow button to adjust width based on text */
     background-color: #ff0000; /* YouTube red */
     color: #ffffff; /* White text */
     border: none;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 30px; /* Increase border-radius for more curve */
+    padding: 10px 20px; /* Adjust padding for better spacing */
     cursor: pointer;
     font-size: 16px;
+    white-space: nowrap; /* Ensure text stays in one line */
 }
 
 #youtubeButton:hover {
