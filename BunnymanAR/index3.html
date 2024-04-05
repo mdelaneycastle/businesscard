@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Over Image</title>
+<style>
+    .container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .button {
+        position: absolute;
+        top: 10px; /* adjust as needed */
+        left: 10px; /* adjust as needed */
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <img class="image" src="your-image.png" alt="Your Image">
+    <button class="button">Click me</button>
+</div>
+
+</body>
+</html>
