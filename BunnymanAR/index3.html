@@ -5,25 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Button Over Image</title>
 <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
     .container {
         position: relative;
         display: inline-block;
+        text-align: center; /* Center the content inside the container */
     }
 
     .image {
         display: block;
-        width: 100%;
+        width: 70vw; /* Adjust as needed */
         height: auto;
-        width: 50%;
+        margin: 0 auto; /* Center the image */
     }
 
     .view-button {
         position: absolute;
-        bottom: 20%; /* Adjust as needed */
+        bottom: 10%; /* Adjust as needed */
         left: 50%;
         transform: translateX(-50%);
         cursor: pointer;
-        width: 50%;
+        width: 49%; /* 70% of the width of the image (70vw * 0.7 = 49vw) */
     }
 </style>
 </head>
