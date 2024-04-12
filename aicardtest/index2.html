@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marc Delaney - IT Co-Ordinator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #d8d1c5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .header {
+    text-align: center;
+    padding: 20px;
+    background-color: #45494e;
+    color: #fff;
+  }
+  #photo {
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 50%;
+  }
+  .button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 15px;
+    text-align: center;
+    background-color: #45494e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .button.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <img id="photo" src="marc.jpg" alt="Marc Delaney">
+  <h1>Marc Delaney</h1>
+  <p>IT Co-Ordinator</p>
+</div>
+<a href="marc.vcf" class="button">Download vCard</a>
+<a href="https://www.castlefineart.com" class="button">Website</a>
+<a href="https://www.youtube.com/castlegalleries" class="button">Youtube</a>
+<a href="https://sketchfab.com/marcosis/models" class="button">Sketchfab Models</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var buttons = document.querySelectorAll('.button');
+    buttons.forEach(function(button) {
+      button.classList.add('visible');
+    });
+  });
+</script>
+</body>
+</html>
