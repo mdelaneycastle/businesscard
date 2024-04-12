@@ -17,6 +17,8 @@
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    opacity: 0; /* Set initial opacity to 0 for fade-in effect */
+    animation: fadeIn 1.5s ease forwards;
   }
   img {
     width: 100%;
@@ -37,13 +39,9 @@
     background-color: #d8d1c5;
     border: none;
     border-radius: 25px;
-    transition: transform 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 0;
+    opacity: 0; /* Set initial opacity to 0 for fade-in effect */
     transform: translateY(20px);
-  }
-  .button.visible {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 1.5s ease forwards;
   }
   @media (max-width: 600px) {
     .container {
@@ -52,6 +50,17 @@
     .button {
       width: 80%;
       margin: 10px 10%;
+    }
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>
@@ -67,26 +76,7 @@
   <a href="https://sketchfab.com/marcosis/models" class="button">Sketchfab Models</a>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    let options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
-
-    let observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, options);
-
-    document.querySelectorAll('.button').forEach(button => {
-      observer.observe(button);
-    });
-  });
+  // No additional JavaScript needed for this effect
 </script>
 </body>
 </html>
-
