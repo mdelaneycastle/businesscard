@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Open Two Links</title>
-  <style>
-    button {
-      width: 50%;
-      margin: 100px auto; /* Adjust the margin as needed */
-      padding: 10px; /* Optional: Add padding for better visual */
-      font-size: 16px; /* Optional: Adjust font size */
-    }
-  </style>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .centered-button {
+            width: 50%;
+            padding: 10px;
+            border-radius: 25px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <button class="centered-button" onclick="openLinks()">Open Links</button>
 
-<button onclick="openLinks()">Open Links</button>
-
-<script>
-function openLinks() {
-  // Open the first link
-  window.location.href = 'https://castlefineart.com';
-  
-  // Open the second link after a short delay (in milliseconds)
-  setTimeout(function(){
-    window.location.href = 'https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect';
-  }, 1000); // Adjust the delay time as needed
-}
-</script>
-
+    <script>
+        function openLinks() {
+            window.open('https://castlefineart.com', '_blank');
+            window.open('https://sketchfab.com/models/562d2aa46a91439fb2335f59043c1a8d/ar-redirect', '_blank');
+        }
+    </script>
 </body>
 </html>
+
 
