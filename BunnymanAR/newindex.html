@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #d8d1c5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            width: 90%;
+            margin: auto;
+        }
+        .title {
+            font-weight: bold;
+            text-align: center;
+        }
+        .artist {
+            text-align: center;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="toplogo.png" alt="Logo">
+    </div>
+    <div class="content">
+        <img src="english.png" alt="English" style="width: 100%;">
+        <div class="button" id="viewButton">
+            <img src="viewbutton.png" alt="View Button">
+        </div>
+        <h2 class="title">Punk Skunk</h2>
+        <p class="artist">Ron English</p>
+    </div>
+    <script>
+        document.getElementById('viewButton').onclick = function() {
+            var ua = navigator.userAgent;
+            if (/iPad|iPhone|iPod/.test(ua)) {
+                window.location.href = "https://raw.githubusercontent.com/mdelaneycastle/businesscard/main/BunnymanAR/English.usdz#allowsContentScaling=0";
+            } else if (/Android/.test(ua)) {
+                window.location.href = "https://sketchfab.com/3d-models/blacksinside-91eeb7a6a92840d18a0f22c462183e8c/ar-redirect";
+            }
+        };
+    </script>
+</body>
+</html>
