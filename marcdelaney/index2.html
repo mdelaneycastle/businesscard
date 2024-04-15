@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Two Links</title>
+</head>
+<body>
+
+<button onclick="openLinks()">Open Links</button>
+
+<script>
+function openLinks() {
+  // Open the first link
+  window.open('https://firstlink.com', '_blank');
+  
+  // Open the second link after a short delay (in milliseconds)
+  setTimeout(function(){
+    window.open('https://secondlink.com', '_blank');
+  }, 1000); // Adjust the delay time as needed
+}
+</script>
+
+</body>
+</html>
